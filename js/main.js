@@ -12,7 +12,13 @@ $(function () {
 	});
 
 
-	$pokemon.eq(randomNumber(3)).
+
+	$charmander.animate({bottom:'150px'}, function () {
+	    setTimeout(function () {
+            $charmander.animate({bottom:'5px'});
+        	},500);
+		});
+	},2000);
 
 
 
