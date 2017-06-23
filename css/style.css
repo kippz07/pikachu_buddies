@@ -1,0 +1,53 @@
+main {
+	height: 560px;
+	width: 900px;
+	background-color: lightblue;
+	margin: auto;
+	position: relative;
+
+}
+
+#foreground {
+	width: 900px;
+	height: 150px;
+	background-color: lightgreen;
+	position: absolute;
+    bottom: 0px;
+}
+
+#perch {
+	width: 126px;
+	height: 10px;
+	background-color: brown;
+	position: absolute;
+    right: 0px;
+    top: 158px;
+}
+
+#pikachu {
+	height: 125px;
+    position: absolute;
+    right: 5px;
+    top: 35px;
+}
+
+#charmander {
+	height: 139px;
+    position: absolute;
+    bottom: 5px;
+    left: 106px;
+}
+
+#squirtle{
+	height: 139px;
+    position: absolute;
+    bottom: 5px;
+    left: 375px;
+}
+
+#bulbasaur {
+	height: 139px;
+    position: absolute;
+    bottom: 5px;
+    right: 106px;
+}
