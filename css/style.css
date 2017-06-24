@@ -13,6 +13,7 @@ main {
 	background-color: lightgreen;
 	position: absolute;
     bottom: 0px;
+    z-index: 1;
 }
 
 #score {

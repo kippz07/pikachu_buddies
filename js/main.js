@@ -3,14 +3,21 @@ $(function () {
 	$main = $('main');
 	$pokemon = $('.pokemon');
 	$score = $('#scoreNumber');
+	$lives = $('#livesNumber');
 
 	var playerScore = 0;
 	var numberOfPokemon = 3;
+	var totalLives = 3;
+	var moveInterval = setInterval(function () {pokemonMovement(numberOfPokemon, $pokemon)},2000);
 
 	$main.on('click', '.pokemon', function (event) {
 		if ($(this).is('.fire')) {
 			playerScore += 10;
 			$score.html(playerScore);
+		} else {
+			totalLives--;
+			$lives.html(totalLives);
+			endGame();
 		}
 		$(this).fadeToggle();
 		$(this).animate({bottom:'5px'});
@@ -21,6 +28,7 @@ $(function () {
 	pokemonMovement(numberOfPokemon, $pokemon);
 
 
+
 	function generatePokemon (num, pokeId) {
 		var $newPokemon = $pokemon.eq(randomNumber(num));
 		return '<img id="' + pokeId + '" class="' + $newPokemon.attr('class') + '" src="' + $newPokemon.attr('src') + '">';
@@ -28,24 +36,24 @@ $(function () {
 
 
 	function pokemonMovement (num, $pokemon) {
-
-		var $this = 0;
-
-		setInterval(function () {
-			 $this = $pokemon.eq(randomNumber(num));
-			$this.animate({bottom:'150px'}, function () {
-		   		setTimeout(function () {
-	           		$this.animate({bottom:'5px'});
-	       		},500);
-		   		setTimeout(function () {
-		   			var randomNum = randomNumber(numberOfPokemon);
-		   			$this.attr('class', 'pokemon ' + randomClass(randomNum));
-		   			$this.attr('src', randomImage(randomNum));
-		   		},800);
-			});	
-		},2000);
+		var $this = $pokemon.eq(randomNumber(num));
+		$this.animate({bottom:'150px'}, function () {
+	 		setTimeout(function () {
+	      		$this.animate({bottom:'5px'});
+    		},500);
+		   	setTimeout(function () {
+		   		var randomNum = randomNumber(numberOfPokemon);
+	  			$this.attr('class', 'pokemon ' + randomClass(randomNum));
+	 			$this.attr('src', randomImage(randomNum));
+	  		},800);
+		});	
 	}
 
+	function endGame() {
+		if (totalLives === 0) {
+			clearInterval(moveInterval);
+		}
+	}
 
 	function randomClass (number) {
 		switch (number) {
