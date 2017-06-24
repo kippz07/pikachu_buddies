@@ -39,21 +39,21 @@ main {
     top: 35px;
 }
 
-.left {
+#left {
 	height: 139px;
     position: absolute;
     bottom: 5px;
     left: 106px;
 }
 
-.center {
+#center {
 	height: 139px;
     position: absolute;
     bottom: 5px;
     left: 375px;
 }
 
-.right {
+#right {
 	height: 139px;
     position: absolute;
     bottom: 5px;
