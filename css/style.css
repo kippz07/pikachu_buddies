@@ -15,11 +15,27 @@ main {
     bottom: 0px;
 }
 
+#score {
+	display: inline-block;
+}
+
 #scoreText {
 	display: inline-block;
 }
 
 #scoreNumber {
+	display: inline-block;
+}
+
+#lives {
+	display: inline-block;
+}
+
+#livesText {
+	display: inline-block;
+}
+
+#livesNumber {
 	display: inline-block;
 }
 

@@ -5,6 +5,7 @@ $(function () {
 	$score = $('#scoreNumber');
 
 	var playerScore = 0;
+	var numberOfPokemon = 3;
 
 	$main.on('click', '.pokemon', function (event) {
 		if ($(this).is('.fire')) {
@@ -13,15 +14,11 @@ $(function () {
 		}
 		$(this).fadeToggle();
 		$(this).animate({bottom:'5px'});
-		var randomNum = randomNumber(3);
-
 		$(this).fadeToggle();
-		//$main.append(generatePokemon(3, $(this).attr('id')));
-
 	});
 
 
-	pokemonMovement(3, $pokemon);
+	pokemonMovement(numberOfPokemon, $pokemon);
 
 
 	function generatePokemon (num, pokeId) {
@@ -41,8 +38,8 @@ $(function () {
 	           		$this.animate({bottom:'5px'});
 	       		},500);
 		   		setTimeout(function () {
-		   			var randomNum = randomNumber(3);
-		   			$this.attr('class', randomClass(randomNum));
+		   			var randomNum = randomNumber(numberOfPokemon);
+		   			$this.attr('class', 'pokemon ' + randomClass(randomNum));
 		   			$this.attr('src', randomImage(randomNum));
 		   		},800);
 			});	
@@ -52,11 +49,11 @@ $(function () {
 
 	function randomClass (number) {
 		switch (number) {
-			case 0: return 'pokemon fire';
+			case 0: return 'fire';
 				break;
-			case 1: return 'pokemon water';
+			case 1: return 'water';
 				break;
-			case 2: return 'pokemon grass';
+			case 2: return 'grass';
 				break;
 		}
 	}
