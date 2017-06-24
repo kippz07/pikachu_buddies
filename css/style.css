@@ -15,6 +15,14 @@ main {
     bottom: 0px;
 }
 
+#scoreText {
+	display: inline-block;
+}
+
+#scoreNumber {
+	display: inline-block;
+}
+
 #perch {
 	width: 126px;
 	height: 10px;
@@ -31,21 +39,21 @@ main {
     top: 35px;
 }
 
-#charmander {
+.left {
 	height: 139px;
     position: absolute;
     bottom: 5px;
     left: 106px;
 }
 
-#squirtle{
+.center {
 	height: 139px;
     position: absolute;
     bottom: 5px;
     left: 375px;
 }
 
-#bulbasaur {
+.right {
 	height: 139px;
     position: absolute;
     bottom: 5px;
