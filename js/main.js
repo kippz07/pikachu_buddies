@@ -12,8 +12,12 @@ $(function () {
 			$score.html(playerScore);
 		}
 		$(this).fadeToggle();
-		$(this).remove();
-		$main.append(generatePokemon(3, $(this).attr('id')));
+		$(this).animate({bottom:'5px'});
+		var randomNum = randomNumber(3);
+
+		$(this).fadeToggle();
+		//$main.append(generatePokemon(3, $(this).attr('id')));
+
 	});
 
 
@@ -29,25 +33,20 @@ $(function () {
 	function pokemonMovement (num, $pokemon) {
 
 		var $this = 0;
-		//var $newPokemon = 0;
 
 		setInterval(function () {
 			 $this = $pokemon.eq(randomNumber(num));
-			 //$newPokemon = $pokemon.eq(randomNumber(num));
-			//console.log($newPokemon);
 			$this.animate({bottom:'150px'}, function () {
 		   		setTimeout(function () {
 	           		$this.animate({bottom:'5px'});
 	       		},500);
 		   		setTimeout(function () {
-		   			$this.removeClass($this.attr('class'));
-		   			$this.addClass(randomClass(randomNumber(3)));
+		   			var randomNum = randomNumber(3);
+		   			$this.attr('class', randomClass(randomNum));
+		   			$this.attr('src', randomImage(randomNum));
 		   		},800);
-			});
-			
-			
+			});	
 		},2000);
-
 	}
 
 
@@ -58,6 +57,17 @@ $(function () {
 			case 1: return 'pokemon water';
 				break;
 			case 2: return 'pokemon grass';
+				break;
+		}
+	}
+
+	function randomImage (number) {
+		switch (number) {
+			case 0: return 'images/charmander.png';
+				break;
+			case 1: return 'images/squirtle.png';
+				break;
+			case 2: return 'images/bulbasaur.png';
 				break;
 		}
 	}
