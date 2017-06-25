@@ -41,7 +41,7 @@ main {
 }
 
 #perch {
-	width: 126px;
+	width: 170px;
 	height: 10px;
 	background-color: brown;
 	position: absolute;
@@ -50,10 +50,10 @@ main {
 }
 
 #pikachu {
-	height: 125px;
+	height: 160px;
     position: absolute;
-    right: 5px;
-    top: 35px;
+    right: 0px;
+    top: 2px;
 }
 
 #left {

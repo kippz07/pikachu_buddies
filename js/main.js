@@ -4,6 +4,7 @@ $(function () {
 	$pokemon = $('.pokemon');
 	$score = $('#scoreNumber');
 	$lives = $('#livesNumber');
+	$pikachu = $('#pikachu');
 
 	var playerScore = 0;
 	var numberOfPokemon = 3;
@@ -14,9 +15,18 @@ $(function () {
 		if ($(this).is('.fire')) {
 			playerScore += 10;
 			$score.html(playerScore);
+			$pikachu.attr('src', 'images/pikachuHappy.png');
+			setTimeout(function () {
+				$pikachu.attr('src', 'images/pikachuHi.png');
+			},500);
+
 		} else {
 			totalLives--;
 			$lives.html(totalLives);
+			$pikachu.attr('src', 'images/pikachuSad.png');
+			setTimeout(function () {
+				$pikachu.attr('src', 'images/pikachuHi.png');
+			},500);
 			endGame();
 		}
 		$(this).fadeToggle();
