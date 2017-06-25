@@ -5,6 +5,9 @@ $(function () {
 	$score = $('#scoreNumber');
 	$lives = $('#livesNumber');
 	$pikachu = $('#pikachu');
+	happyAudio = 'raw/Pikaaaa.mp3';
+	sadAudio = 'raw/Attack.mp3';
+	levelUpAudio = 'raw/congrats.mp3';
 
 	var playerScore = 0;
 	var numberOfPokemon = 3;
@@ -18,7 +21,8 @@ $(function () {
 			$pikachu.attr('src', 'images/pikachuHappy.png');
 			setTimeout(function () {
 				$pikachu.attr('src', 'images/pikachuHi.png');
-			},500);
+			},1000);
+			playSound(happyAudio);
 
 		} else {
 			totalLives--;
@@ -26,7 +30,8 @@ $(function () {
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			setTimeout(function () {
 				$pikachu.attr('src', 'images/pikachuHi.png');
-			},500);
+			},2000);
+			playSound(sadAudio);
 			endGame();
 		}
 		$(this).fadeToggle();
@@ -37,7 +42,11 @@ $(function () {
 
 	pokemonMovement(numberOfPokemon, $pokemon);
 
-
+	function playSound(path) {
+        var audioElement = document.createElement('audio');
+  		audioElement.setAttribute('src', path);
+  		audioElement.play();
+    }
 
 	function generatePokemon (num, pokeId) {
 		var $newPokemon = $pokemon.eq(randomNumber(num));
