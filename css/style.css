@@ -8,15 +8,62 @@ main {
 	background-size: 910px;
 }
 
+#endScreen {
+	height: 560px;
+	width: 900px;
+	background-color: lightblue;
+	margin: auto;
+	position: relative;
+	background-image: url('../images/endscene.jpg');
+	background-size: 995px;
+	
+    background-repeat: no-repeat;
+}
+
+#gameOver {
+	font-family: 'Marker Felt';
+	text-align: center;
+	font-size: 113px;
+    margin: 0;
+    color: #fef9e6;
+    padding-top: 106px;
+}
+
+#playAgain {
+	font-family: 'Marker Felt';
+	font-size: 60px;
+    color: #fef9e6;
+    margin-top: 11px;
+    display: inline-block;
+    margin-left: 300px;
+    border-style: dashed;
+    border-color: #fef9e6;
+    padding: 18px;
+    border-radius: 42px;
+    border-width: 6px;
+}
+
+#playAgain:hover {
+	background-color: #e94f1f;
+}
+
+#endScore {
+	text-align: center;
+    font-size: 30px;
+    font-family: 'Marker Felt';
+    color: white;
+}
+
 #foreground {
 	width: 900px;
 	position: absolute;
 	bottom: 0px;
-    z-index: 1;
+    z-index: 2;
+    pointer-events: none;
 }
 
 #cover {
-	height: 50px;
+	height: 144px;
 	width: 900px;
 	margin: auto;
 	background-color: white;
@@ -25,28 +72,60 @@ main {
 	z-index: 1;
 }
 
+#objective {
+    display: inline-block;
+    position: absolute;
+    top: 50px;
+    padding: 16px;
+    right: 260px;
+    border-style: ridge;
+    background-color: yellow;
+    border-radius: 19px;
+    border-color: red;
+    font-family: 'Marker Felt';
+}
+
+#objective p {
+	margin: 0;
+}
+
+span {
+	font-weight: bold;
+	color: red;
+}
+
 #score {
-	display: inline-block;
+	font-size: 50px;
+	margin-left: 20px;
+
 }
 
 #scoreText {
 	display: inline-block;
+	font-family: 'Marker Felt';
+	margin-top: 0px;
 }
 
 #scoreNumber {
 	display: inline-block;
+	font-family: 'Marker Felt';
+	margin-top: 0px;
 }
 
 #lives {
 	display: inline-block;
+	font-size: 50px;
+	margin-left: 20px;
 }
 
 #livesText {
 	display: inline-block;
+	font-family: 'Marker Felt';
 }
 
 #livesNumber {
 	display: inline-block;
+	font-family: 'Marker Felt';
 }
 
 #perch {

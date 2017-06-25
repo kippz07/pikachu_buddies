@@ -8,37 +8,51 @@ $(function () {
 	happyAudio = 'raw/Pikaaaa.mp3';
 	sadAudio = 'raw/Attack.mp3';
 	levelUpAudio = 'raw/congrats.mp3';
+	$endscreen = $('section');
+	$endscreen.hide();
+	$gameOver = $('#gameOver');
+	$gameOver.hide();
+	$playAgain = $('#playAgain');
+	$playAgain.hide();
+	$endScore = $('#endScore');
+	$endScore.hide();
 
 	var playerScore = 0;
 	var numberOfPokemon = 3;
 	var totalLives = 3;
-	var moveInterval = setInterval(function () {pokemonMovement(numberOfPokemon, $pokemon)},2000);
+	var moveInterval = setInterval(function () {
+		pokemonMovement(numberOfPokemon, $pokemon)
+	},2000);
 
 	$main.on('click', '.pokemon', function (event) {
 		if ($(this).is('.fire')) {
 			playerScore += 10;
 			$score.html(playerScore);
+			playSound(happyAudio);
 			$pikachu.attr('src', 'images/pikachuHappy.png');
 			setTimeout(function () {
 				$pikachu.attr('src', 'images/pikachuHi.png');
 			},1000);
-			playSound(happyAudio);
-
 		} else {
 			totalLives--;
 			$lives.html(totalLives);
-			$pikachu.attr('src', 'images/pikachuSad.png');
-			setTimeout(function () {
-				$pikachu.attr('src', 'images/pikachuHi.png');
-			},2000);
 			playSound(sadAudio);
+			$pikachu.attr('src', 'images/pikachuSad.png');
+			if (totalLives != 0) {
+				setTimeout(function () {
+					$pikachu.attr('src', 'images/pikachuHi.png');
+				},2000);
+			}
 			endGame();
 		}
 		$(this).fadeToggle();
-		$(this).animate({bottom:'5px'});
+		$(this).animate({bottom:'-21px'});
 		$(this).fadeToggle();
 	});
 
+	$playAgain.click(function (event) {
+		resetGame();
+	});
 
 	pokemonMovement(numberOfPokemon, $pokemon);
 
@@ -59,19 +73,48 @@ $(function () {
 		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
-    		},500);
+    		},800);
 		   	setTimeout(function () {
 		   		var randomNum = randomNumber(numberOfPokemon);
 	  			$this.attr('class', 'pokemon ' + randomClass(randomNum));
 	 			$this.attr('src', randomImage(randomNum));
-	  		},800);
+	  		},1200);
 		});	
 	}
 
 	function endGame() {
 		if (totalLives === 0) {
+			$pikachu.attr('src', 'images/pikachuSad.png');
 			clearInterval(moveInterval);
+			$main.fadeOut(900);
+			setTimeout(function () {
+				$endscreen.fadeIn('slow');
+			},1000);
+			setTimeout(function () {
+				$gameOver.fadeIn('slow');
+			},2000);
+			setTimeout(function () {
+				$endScore.text('You got a score of: ' + playerScore);
+				$endScore.fadeIn('slow');
+			},3000);
+			setTimeout(function () {
+				$playAgain.fadeIn('slow');
+			},4000);
 		}
+	}
+
+	function resetGame () {
+		$endscreen.hide();
+		$gameOver.hide();
+		$playAgain.hide();
+		$main.show();
+		moveInterval = setInterval(function () {
+			pokemonMovement(numberOfPokemon, $pokemon)
+		},2000);
+		playerScore = 0;
+		$score.text(playerScore);
+		totalLives = 3;
+		$lives.text(totalLives);
 	}
 
 	function randomClass (number) {
