@@ -4,16 +4,25 @@ main {
 	background-color: lightblue;
 	margin: auto;
 	position: relative;
-
+	background-image: url('../images/scene3.png');
+	background-size: 910px;
 }
 
 #foreground {
 	width: 900px;
-	height: 150px;
-	background-color: lightgreen;
 	position: absolute;
-    bottom: 0px;
+	bottom: 0px;
     z-index: 1;
+}
+
+#cover {
+	height: 50px;
+	width: 900px;
+	margin: auto;
+	background-color: white;
+	position: absolute;
+	bottom: -50px;
+	z-index: 1;
 }
 
 #score {
@@ -42,11 +51,9 @@ main {
 
 #perch {
 	width: 170px;
-	height: 10px;
-	background-color: brown;
 	position: absolute;
     right: 0px;
-    top: 158px;
+    top: 143px;
 }
 
 #pikachu {
@@ -54,25 +61,26 @@ main {
     position: absolute;
     right: 0px;
     top: 2px;
+    z-index: 1;
 }
 
 #left {
 	height: 139px;
     position: absolute;
-    bottom: 5px;
+    bottom: -11px;
     left: 106px;
 }
 
 #center {
 	height: 139px;
     position: absolute;
-    bottom: 5px;
+    bottom: -29px;
     left: 375px;
 }
 
 #right {
 	height: 139px;
     position: absolute;
-    bottom: 5px;
+    bottom: -34px;
     right: 106px;
 }

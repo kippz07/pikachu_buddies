@@ -56,9 +56,9 @@ $(function () {
 
 	function pokemonMovement (num, $pokemon) {
 		var $this = $pokemon.eq(randomNumber(num));
-		$this.animate({bottom:'150px'}, function () {
+		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
-	      		$this.animate({bottom:'5px'});
+	      		$this.animate({bottom:'-28px'});
     		},500);
 		   	setTimeout(function () {
 		   		var randomNum = randomNumber(numberOfPokemon);
