@@ -107,6 +107,7 @@ $(function () {
 		$endscreen.hide();
 		$gameOver.hide();
 		$playAgain.hide();
+		$endScore.hide();
 		$main.show();
 		moveInterval = setInterval(function () {
 			pokemonMovement(numberOfPokemon, $pokemon)
