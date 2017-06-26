@@ -8,12 +8,18 @@ $(function () {
 	var happyAudio = 'raw/Pikaaaa.mp3';
 	var sadAudio = 'raw/Attack.mp3';
 	var levelUpAudio = 'raw/congrats.mp3';
+	var $popup = $('#popup');
+	$popup.hide();
+	var $enterName = $('#nameEnter');
+	$enterName.hide();
 	var $endscreen = $('section');
+	$endscreen.hide();
 	var $objective = $('#object');
 	var $span = $('span');
 	var $submitText = $('#user-input');
+	$submitText.hide();
 	var $submitButton = $('#submit');
-	$endscreen.hide();
+	$submitButton.hide();
 	var $gameOver = $('#gameOver');
 	$gameOver.hide();
 	var $playAgain = $('#playAgain');
@@ -74,7 +80,18 @@ $(function () {
 	});
 
 	$submitButton.click(function () {
-		console.log('clicked');
+		leaderboardArray.push({name: $submitText.val(), score: playerScore});
+		console.log(leaderboardArray[0]);
+			$endScore.hide();
+		 	$submitButton.hide();
+			$submitText.hide();
+	 		$enterName.hide();
+			$popup.animate({
+		 		width:'0px',
+		 		height:'0px'
+			}, function () {
+		 		$popup.hide();
+		 	});
 	})
 
 	pokemonMovement(numberOfPokemon, $pokemon);
@@ -145,6 +162,7 @@ $(function () {
 
 	function endGame () {
 		if (totalLives === 0) {
+			$endScore.text('You got a score of: ' + playerScore);
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			clearInterval(moveInterval);
 			$main.fadeOut(900);
@@ -154,9 +172,16 @@ $(function () {
 			setTimeout(function () {
 				$gameOver.fadeIn('slow');
 			},2000);
-			setTimeout(function () {
-				$endScore.text('You got a score of: ' + playerScore);
-				$endScore.fadeIn('slow');
+			setTimeout(function () {ß
+			 	$popup.animate({
+			 		width:'370px',
+			 		height:'191px'
+			 	}, function () {
+			 		$endScore.fadeIn();
+			 		$submitButton.fadeIn();
+			 		$submitText.fadeIn();
+			 		$enterName.fadeIn();
+			 	});
 			},3000);
 			setTimeout(function () {
 				$playAgain.fadeIn('slow');
@@ -209,6 +234,6 @@ $(function () {
 		return num;
 	} 
 
-	var leaderboardArray = [];
+	
 
 })

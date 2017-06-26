@@ -26,7 +26,7 @@ main {
 	font-size: 113px;
     margin: 0;
     color: #fef9e6;
-    padding-top: 106px;
+    padding-top: 67px;
 }
 
 #playAgain {
@@ -54,7 +54,7 @@ main {
 }
 
 #popup {
-	width: 370px;
+	width: 0px;
     background-color: yellow;
     margin: auto;
     border-style: ridge;
@@ -63,7 +63,7 @@ main {
     border-color: red;
     position: relative;
     bottom: 317px;
-    height: 191px;
+    height: 0px;
 }
 
 #nameEnter {
@@ -72,6 +72,7 @@ main {
     font-size: 18px;
     border-style: none;
     background-color: yellow;
+    
 }
 
 #user-input {
@@ -80,8 +81,15 @@ main {
     border-radius: 10px;
     font-size: 16px;
 	font-family: 'Marker Felt';
+	padding: 4px;
 }
 
+#submit {
+	font-family: 'Marker Felt';
+	font-size: 17px;
+    background-color: yellow;
+    border-style: none;
+}
 
 #foreground {
 	width: 900px;
