@@ -89,9 +89,19 @@ main {
 	margin: 0;
 }
 
-span {
+.red {
 	font-weight: bold;
 	color: red;
+}
+
+.blue {
+	font-weight: bold;
+	color: blue;
+}
+
+.green {
+	font-weight: bold;
+	color: green;
 }
 
 #score {

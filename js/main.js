@@ -1,31 +1,42 @@
 $(function () {
 
-	$main = $('main');
-	$pokemon = $('.pokemon');
-	$score = $('#scoreNumber');
-	$lives = $('#livesNumber');
-	$pikachu = $('#pikachu');
-	happyAudio = 'raw/Pikaaaa.mp3';
-	sadAudio = 'raw/Attack.mp3';
-	levelUpAudio = 'raw/congrats.mp3';
-	$endscreen = $('section');
+	var $main = $('main');
+	var $pokemon = $('.pokemon');
+	var $score = $('#scoreNumber');
+	var $lives = $('#livesNumber');
+	var $pikachu = $('#pikachu');
+	var happyAudio = 'raw/Pikaaaa.mp3';
+	var sadAudio = 'raw/Attack.mp3';
+	var levelUpAudio = 'raw/congrats.mp3';
+	var $endscreen = $('section');
+	var $objective = $('#object');
+	var $span = $('span');
 	$endscreen.hide();
-	$gameOver = $('#gameOver');
+	var $gameOver = $('#gameOver');
 	$gameOver.hide();
-	$playAgain = $('#playAgain');
+	var $playAgain = $('#playAgain');
 	$playAgain.hide();
-	$endScore = $('#endScore');
+	var $endScore = $('#endScore');
 	$endScore.hide();
-
+	var newObject = '';
 	var playerScore = 0;
 	var numberOfPokemon = 3;
 	var totalLives = 3;
 	var moveInterval = setInterval(function () {
 		pokemonMovement(numberOfPokemon, $pokemon)
 	},2000);
+	//debugger
+	var initialNum = randomNumber(3);
+	levels(initialNum);
+	newObject = levels(initialNum);
 
 	$main.on('click', '.pokemon', function (event) {
-		if ($(this).is('.fire')) {
+		//debugger
+		newNum = randomNumber(3);
+		
+		var str = '.' + newObject;
+		
+		if ($(this).is(str)) {
 			playerScore += 10;
 			$score.html(playerScore);
 			playSound(happyAudio);
@@ -33,6 +44,8 @@ $(function () {
 			setTimeout(function () {
 				$pikachu.attr('src', 'images/pikachuHi.png');
 			},1000);
+			newObject = levels(newNum);
+			
 		} else {
 			totalLives--;
 			$lives.html(totalLives);
@@ -62,10 +75,10 @@ $(function () {
   		audioElement.play();
     }
 
-	function generatePokemon (num, pokeId) {
-		var $newPokemon = $pokemon.eq(randomNumber(num));
-		return '<img id="' + pokeId + '" class="' + $newPokemon.attr('class') + '" src="' + $newPokemon.attr('src') + '">';
-	}
+	// function generatePokemon (num, pokeId) {
+	// 	var $newPokemon = $pokemon.eq(randomNumber(num));
+	// 	return '<img id="' + pokeId + '" class="' + $newPokemon.attr('class') + '" src="' + $newPokemon.attr('src') + '">';
+	// }
 
 
 	function pokemonMovement (num, $pokemon) {
@@ -82,7 +95,48 @@ $(function () {
 		});	
 	}
 
-	function endGame() {
+	function newObjective (number) {
+		$span.removeClass();
+		//debugger
+		switch (number) {
+			case 0: 
+				$objective.html('Pikachu wants you to catch a <span>fire type</span> Pokemon');
+				
+				$objective.find('span').toggleClass('red');
+				return 'fire';
+				break;
+			case 1: 
+				$objective.html('Pikachu wants you to catch a <span>water type</span> Pokemon');
+				//$span.removeClass();
+				$objective.find('span').toggleClass('blue');
+				return 'water';
+				break;
+			case 2: 
+				$objective.html('Pikachu wants you to catch a <span>grass type</span> Pokemon');
+				//$span.removeClass();
+				$objective.find('span').toggleClass('green');
+				return 'grass';
+				break;
+		}
+	}
+
+	function levels (num) {
+		var newObj = '';
+		//debugger
+		switch (playerScore) {
+			case 0:
+			case 50: 
+			case 100:
+			case 200: newObj = newObjective(num);
+				playSound(levelUpAudio);
+				break;
+
+			default: newObj = newObject;
+		}
+		return newObj;
+	}
+
+	function endGame () {
 		if (totalLives === 0) {
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			clearInterval(moveInterval);
@@ -116,6 +170,7 @@ $(function () {
 		$score.text(playerScore);
 		totalLives = 3;
 		$lives.text(totalLives);
+		$pikachu.attr('src', 'images/pikachuHi.png');
 	}
 
 	function randomClass (number) {
