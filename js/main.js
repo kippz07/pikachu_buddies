@@ -26,6 +26,9 @@ $(function () {
 	$playAgain.hide();
 	var $endScore = $('#endScore');
 	$endScore.hide();
+
+	var $leaderboard = $('list');
+
 	var newObject = '';
 	var playerScore = 0;
 	var numberOfPokemon = 3;
@@ -80,18 +83,20 @@ $(function () {
 	});
 
 	$submitButton.click(function () {
-		leaderboardArray.push({name: $submitText.val(), score: playerScore});
-		console.log(leaderboardArray[0]);
-			$endScore.hide();
-		 	$submitButton.hide();
-			$submitText.hide();
-	 		$enterName.hide();
-			$popup.animate({
-		 		width:'0px',
-		 		height:'0px'
-			}, function () {
-		 		$popup.hide();
-		 	});
+		var data = {'name': $submitText.val(), 'score': playerScore};
+		leaderboardArray.push(data);
+		storeScores(leaderboardArray);
+		//console.log(leaderboardArray[0]);
+		$endScore.hide();
+		$submitButton.hide();
+		$submitText.hide();
+	 	$enterName.hide();
+		$popup.animate({
+			width:'0px',
+			height:'0px'
+		}, function () {
+		 	$popup.hide();
+		});
 	})
 
 	pokemonMovement(numberOfPokemon, $pokemon);
@@ -172,7 +177,7 @@ $(function () {
 			setTimeout(function () {
 				$gameOver.fadeIn('slow');
 			},2000);
-			setTimeout(function () {ß
+			setTimeout(function () {
 			 	$popup.animate({
 			 		width:'370px',
 			 		height:'191px'
@@ -203,6 +208,7 @@ $(function () {
 		totalLives = 3;
 		$lives.text(totalLives);
 		$pikachu.attr('src', 'images/pikachuHi.png');
+		$submitText.text('');
 	}
 
 	function randomClass (number) {
@@ -234,6 +240,52 @@ $(function () {
 		return num;
 	} 
 
+	function storeScores (array) {
+		//debugger
+		var objects = {};
+		var strings= '';
+		for (var i = 0; i < array.length; i++) {
+			//strings += '{"name": "' + array[i].name + '", "score": ' + array[i].score + '}';
+			objects.name = array[i].name;
+			objects.score = array[i].score;
+			strings += JSON.stringify(objects);
+			if (i != array.length-1) {
+				strings += ', ';
+			}
+		}
+		//string += ']';
+
+		//var arrString = JSON.stringify(string);
+
+		localStorage.setItem('scores', strings);
+
+		//var retrievedObject = localStorage.getItem('scores');
+		
+		
+		var scores = JSON.parse('[' + localStorage.getItem('scores') + ']');
+		retrieveScores(scores);
+	}
 	
+	function retrieveScores (scores) {
+		//debugger
+		$('ol').empty();
+	
+		if (scores.length > 1) {
+			scores.sort(function(a, b) {
+    			return parseInt(b.score) - parseInt(a.score);
+			});
+		}
+		if (scores.length < 5) {
+			for (var i = 0; i < scores.length; i++) {
+				$('ol').append('<li><p class="leadname">name: ' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
+			}
+		} else {
+			for (var i = 0; i < 5; i++) {
+				$('ol').append('<li><p class="leadname">name: ' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
+			}
+		}
+		
+
+	}
 
 })
