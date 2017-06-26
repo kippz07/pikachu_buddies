@@ -51,8 +51,37 @@ main {
 	text-align: center;
     font-size: 30px;
     font-family: 'Marker Felt';
-    color: white;
 }
+
+#popup {
+	width: 370px;
+    background-color: yellow;
+    margin: auto;
+    border-style: ridge;
+    font-family: 'Marker Felt';
+    border-radius: 19px;
+    border-color: red;
+    position: relative;
+    bottom: 317px;
+    height: 191px;
+}
+
+#nameEnter {
+	text-align: center;
+	font-family: 'Marker Felt';
+    font-size: 18px;
+    border-style: none;
+    background-color: yellow;
+}
+
+#user-input {
+	margin-left: 71px;
+    border-style: dashed;
+    border-radius: 10px;
+    font-size: 16px;
+	font-family: 'Marker Felt';
+}
+
 
 #foreground {
 	width: 900px;

@@ -11,6 +11,8 @@ $(function () {
 	var $endscreen = $('section');
 	var $objective = $('#object');
 	var $span = $('span');
+	var $submitText = $('#user-input');
+	var $submitButton = $('#submit');
 	$endscreen.hide();
 	var $gameOver = $('#gameOver');
 	$gameOver.hide();
@@ -22,6 +24,10 @@ $(function () {
 	var playerScore = 0;
 	var numberOfPokemon = 3;
 	var totalLives = 3;
+
+	var leaderboardArray = [];
+
+
 	var moveInterval = setInterval(function () {
 		pokemonMovement(numberOfPokemon, $pokemon)
 	},2000);
@@ -67,6 +73,10 @@ $(function () {
 		resetGame();
 	});
 
+	$submitButton.click(function () {
+		console.log('clicked');
+	})
+
 	pokemonMovement(numberOfPokemon, $pokemon);
 
 	function playSound(path) {
@@ -101,19 +111,16 @@ $(function () {
 		switch (number) {
 			case 0: 
 				$objective.html('Pikachu wants you to catch a <span>fire type</span> Pokemon');
-				
 				$objective.find('span').toggleClass('red');
 				return 'fire';
 				break;
 			case 1: 
 				$objective.html('Pikachu wants you to catch a <span>water type</span> Pokemon');
-				//$span.removeClass();
 				$objective.find('span').toggleClass('blue');
 				return 'water';
 				break;
 			case 2: 
 				$objective.html('Pikachu wants you to catch a <span>grass type</span> Pokemon');
-				//$span.removeClass();
 				$objective.find('span').toggleClass('green');
 				return 'grass';
 				break;
@@ -202,5 +209,6 @@ $(function () {
 		return num;
 	} 
 
+	var leaderboardArray = [];
 
 })
