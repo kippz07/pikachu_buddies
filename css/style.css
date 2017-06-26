@@ -26,25 +26,25 @@ main {
 	font-size: 113px;
     margin: 0;
     color: #fef9e6;
-    padding-top: 67px;
+    padding-top: 57px;
 }
 
 #playAgain {
 	font-family: 'Marker Felt';
-	font-size: 60px;
-    color: #fef9e6;
-    margin-top: 11px;
+	font-size: 36px;
+    color: #482835;
+    margin-top: -3px;
     display: inline-block;
-    margin-left: 300px;
+    margin-left: 345px;
     border-style: dashed;
-    border-color: #fef9e6;
+    border-color: #482835;
     padding: 18px;
     border-radius: 42px;
     border-width: 6px;
 }
 
 #playAgain:hover {
-	background-color: #e94f1f;
+	background-color: white;
 }
 
 #endScore {
@@ -124,6 +124,33 @@ main {
 
 #objective p {
 	margin: 0;
+}
+
+#leaderboard {
+	width: 393px;
+    margin: auto;
+    color: white;
+}
+
+#list {
+	font-family: 'Marker Felt';
+	font-size: 24px;
+}
+
+.leadname {
+    display: inline-block;
+    font-family: 'Marker Felt';
+    font-size: 24px;
+    margin: 8px;
+}
+
+.leadscore {
+    display: inline-block;
+    font-family: 'Marker Felt';
+    margin: 8px;
+    font-size: 24px;
+    margin-right: 38px;
+    float: right;
 }
 
 .red {

@@ -242,12 +242,11 @@ $(function () {
 	} 
 
 	function storeScores (array) {
-		debugger
+		//debugger
 		var objects = {};
 		var strings= '';
 		
 		for (var i = 0; i < array.length; i++) {
-			//strings += '{"name": "' + array[i].name + '", "score": ' + array[i].score + '}';
 			objects.name = array[i].name;
 			objects.score = array[i].score;
 			strings += JSON.stringify(objects);
@@ -257,24 +256,11 @@ $(function () {
 			localStorage.setItem(objNumber.toString(), strings);
 			objNumber = localStorage.length;
 		}
-		//string += ']';
-
-		//var arrString = JSON.stringify(string);
-
-		//localStorage.setItem('scores', strings);
-
-		//var retrievedObject = localStorage.getItem('scores');
-		
-		
-		//var scores = JSON.parse('[' + localStorage.getItem('scores') + ']');
 		retrieveScores();
 	}
 	
 	function retrieveScores () {
-		debugger
-
-		//var scores = JSON.parse('[' + localStorage.getItem('scores') + ']');
-
+		//debugger
 		var scores = [];
 
 		for (var i = 0; i < objNumber; i++) {
@@ -291,11 +277,11 @@ $(function () {
 		}
 		if (scores.length < 5) {
 			for (var i = 0; i < scores.length; i++) {
-				$('ol').append('<li><p class="leadname">name: ' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
+				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
 			}
 		} else {
 			for (var i = 0; i < 5; i++) {
-				$('ol').append('<li><p class="leadname">name: ' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
+				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
 			}
 		}
 		
