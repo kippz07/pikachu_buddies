@@ -51,8 +51,10 @@ $(function () {
 
 	//debugger
 	var initialNum = randomNumber(3);
+
 	levels(initialNum);
 	newObject = levels(initialNum);
+	
 
 	$main.on('click', '.pokemon', function (event) {
 		//debugger
@@ -109,15 +111,23 @@ $(function () {
 	})
 
 	$okbutton.click(function(event) {
+		//debugger
 		if ($('#winlose').hasClass('win')) {
 			playerScore += 30;
+			$score.html(playerScore);
+			$bossLevel.fadeOut(900);
+			setTimeout(function () {
+				$main.fadeIn('slow');
+			},900)
+			moveInterval = setInterval(function () {
+			pokemonMovement(numberOfPokemon, $pokemon)
+	},2000);
 		} else {
+			totalLives = 0;
+			$bossLevel.fadeOut(900);
 			endGame();
 		}
-		$bossLevel.fadeOut(900);
-		setTimeout(function () {
-			$main.fadeIn('slow');
-		},900)
+		
 		pauseSound();
 
 	})
@@ -193,23 +203,27 @@ $(function () {
 	}
 
 	function boss () {
+		debugger
 		var sound = document.getElementById('battleMusic');
     	sound.play();
+    	clearInterval(moveInterval);
 		setTimeout(function() {
 			$main.fadeOut(900);
 		},900);
 		setTimeout(function() {
 			$bossLevel.fadeIn('slow');
-		},1000)
+		},1900)
 		
 	}
 
 	function endGame () {
+		//debugger
 		if (totalLives === 0) {
 			$endScore.text('You got a score of: ' + playerScore);
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			clearInterval(moveInterval);
 			$main.fadeOut(900);
+			$bossLevel.hide();
 			setTimeout(function () {
 				$endscreen.fadeIn('slow');
 			},1000);
@@ -239,6 +253,7 @@ $(function () {
 		$playAgain.hide();
 		$endScore.hide();
 		$main.show();
+		$bossLevel.hide();
 		moveInterval = setInterval(function () {
 			pokemonMovement(numberOfPokemon, $pokemon)
 		},2000);

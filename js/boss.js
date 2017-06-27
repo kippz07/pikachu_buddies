@@ -11,6 +11,7 @@ $(function() {
 	var $hideAttacks = $('#hideAttacks');
 	var $winlose = $('#winlose');
 	$winlose.hide();
+	var $okbutton = $('#winlose button');
 	var pp = 0;
 	var count = 0;
 
@@ -102,6 +103,10 @@ $(function() {
 			count++;
 			play();
 		}
+	})
+
+	$okbutton.click(function () {
+		$bossLevel.hide();
 	})
 
 	play();
