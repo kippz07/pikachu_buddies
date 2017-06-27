@@ -2,10 +2,10 @@ $(function() {
 
 	var bossHealth = 500;
 	var remHealth = 100;
-	var $bossHealthbar = $('.healthbar');
+	var $bossHealthbar = $('#bosshealthbar');
 	var pikachuHealth = 500;
 	var pikaremHealth = 100;
-	var $pikachuHealthbar = $('.healthbar');
+	var $pikachuHealthbar = $('#pikachuhealthbar');
 	var $hideAttacks = $('#hideAttacks');
 	var pp = 0;
 	var count = 0;
@@ -43,8 +43,12 @@ $(function() {
 			pp--;
 			$pp1.html(pp);
 		}
-		count++;
-		play();
+		if (remHealth <= 0) {
+			endGame('player');
+		} else {
+			count++;
+			play();
+		}
 	})
 
 	$att2.click(function (event) {
@@ -55,8 +59,12 @@ $(function() {
 			pp--;
 			$pp2.html(pp);
 		}
-		count++;
-		play();
+		if (remHealth <= 0) {
+			endGame('player');
+		} else {
+			count++;
+			play();
+		}
 	})
 
 	$att3.click(function (event) {
@@ -67,8 +75,12 @@ $(function() {
 			pp--;
 			$pp3.html(pp);
 		}
-		count++;
-		play();	
+		if (remHealth <= 0) {
+			endGame('player');
+		} else {
+			count++;
+			play();
+		}	
 	})
 
 	$att4.click(function (event) {
@@ -79,9 +91,16 @@ $(function() {
 			pp--;
 			$pp4.html(pp);
 		}
-		count++;
-		play();
+		
+		if (remHealth <= 0) {
+			endGame('player');
+		} else {
+			count++;
+			play();
+		}
 	})
+
+	play();
 
 	function play () {
 		if (count % 2 === 0) {
@@ -89,8 +108,9 @@ $(function() {
 
 		} else {
 			$hideAttacks.show();
-			blastoiseAttack();
-			count++;
+			setTimeout(function () {
+				blastoiseAttack();
+			},1000);
 		}
 	}
 
@@ -101,37 +121,53 @@ $(function() {
 				pp = hydroPump.pp;
 				if (pp > 0) {
 					pikaremHealth = pikaremHealth - (hydroPump.dmg * 100 / pikachuHealth);
-					$pickachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					pp--;
-					break;
 				}
+				break;
 				
 			case 1:
 				pp = darkPulse.pp;
 				if (pp > 0) {
 					pikaremHealth = pikaremHealth - (darkPulse.dmg * 100 / pikachuHealth);
-					$pickachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					pp--;
-					break;
 				}
+				break;
 				
 			case 2:
 				pp = iceBeam.pp;
 				if (pp > 0) {
 					pikaremHealth = pikaremHealth - (iceBeam.dmg * 100 / pikachuHealth);
-					$pickachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					pp--;
-					break;
 				}
+				break;
 				
 			case 3:
 				pp = dragonPulse.pp;
 				if (pp > 0) {
 					pikaremHealth = pikaremHealth - (dragonPulse.dmg * 100 / pikachuHealth);
-					$pickachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					pp--;
-					break;
-				}			
+				}		
+				break;	
+		}
+		if (pikaremHealth <= 0) {
+			endGame('comp');
+		} else {
+			count++;
+			play();
+		}
+	}
+
+	function endGame (player) {
+		switch (player) {
+			case 'human':
+				console.log('human won');
+
+			case 'comp':
+				console.log('comp won');
 		}
 	}
 
