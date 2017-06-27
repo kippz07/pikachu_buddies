@@ -8,6 +8,17 @@ main {
 	background-size: 910px;
 }
 
+#boss {
+	height: 560px;
+	width: 900px;
+	background-color: lightblue;
+	margin: auto;
+	position: relative;
+	background-image: url('../images/scene27.jpg');
+	background-size: 995px;
+    background-repeat: no-repeat;
+}
+
 #endScreen {
 	height: 560px;
 	width: 900px;
@@ -16,7 +27,6 @@ main {
 	position: relative;
 	background-image: url('../images/endscene.jpg');
 	background-size: 995px;
-	
     background-repeat: no-repeat;
 }
 

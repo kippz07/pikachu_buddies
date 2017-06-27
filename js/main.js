@@ -284,8 +284,6 @@ $(function () {
 				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
 			}
 		}
-		
-
 	}
 
 })
