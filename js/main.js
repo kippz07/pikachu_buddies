@@ -8,6 +8,9 @@ $(function () {
 	var happyAudio = 'raw/Pikaaaa.mp3';
 	var sadAudio = 'raw/Attack.mp3';
 	var levelUpAudio = 'raw/congrats.mp3';
+	var bossAudio = 'raw/battle.mp3';
+	var $bossLevel = $('#boss');
+	$bossLevel.hide(); 
 	var $popup = $('#popup');
 	$popup.hide();
 	var $enterName = $('#nameEnter');
@@ -26,12 +29,13 @@ $(function () {
 	$playAgain.hide();
 	var $endScore = $('#endScore');
 	$endScore.hide();
+	var $okbutton = $('#winlose button');
 
 	var $leaderboard = $('list');
 
-	// var bossHealth = 500;
-	// var remHealth = 100;
-	// var $bossHealthbar = $('.healthbar');
+	var bossHealth = 500;
+	var remHealth = 100;
+	var $bossHealthbar = $('.healthbar');
 
 	var newObject = '';
 	var playerScore = 0;
@@ -41,43 +45,9 @@ $(function () {
 	var leaderboardArray = [];
 	var objNumber = localStorage.length;
 
-	// var thunderbolt = {"dmg": 95, "acc": 100, "pp": 15, "flinch": 10};
-	// var hiddenPower = {"dmg": 60, "acc": 100, "pp": 15, "flinch": 0};
-	// var thunder = {"dmg": 110, "acc": 70, "pp": 10, "flinch": 10};
-	// var thunderShock = {"dmg": 40, "acc": 100, "pp": 30, "flinch": 10};
-	// var hydroPump = {"dmg": 110, "acc": 80, "pp": 5, "flinch": 0};
-	// var darkPulse = {"dmg": 80, "acc": 100, "pp": 15, "flinch": 10};
-	// var iceBeam = {"dmg": 90, "acc": 100, "pp": 10, "flinch": 10};
-	// var dragonPulse = {"dmg": 85, "acc": 100, "pp": 10, "flinch": 0};
-
-	// var $att1 = $('#attack1');
-	// var $att2 = $('#attack2');
-	// var $att3 = $('#attack3');
-	// var $att4 = $('#attack4');
-
-	// $att1.click(function (event) {
-	// 	console.log(thunderbolt.dmg);
-	// 	remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
-	// 	$bossHealthbar.css('width', remHealth + '%');
-	// })
-
-	// $att2.click(function (event) {
-	// 	console.log(hiddenPower.dmg);
-	// })
-
-	// $att3.click(function (event) {
-	// 	console.log(thunder.dmg);
-	// })
-
-	// $att4.click(function (event) {
-	// 	console.log(thunderShock.dmg);
-	// })
-
-	// var moveInterval = setInterval(function () {
-	// 	pokemonMovement(numberOfPokemon, $pokemon)
-	// },2000);
-
-	$main.hide();
+	var moveInterval = setInterval(function () {
+		pokemonMovement(numberOfPokemon, $pokemon)
+	},2000);
 
 	//debugger
 	var initialNum = randomNumber(3);
@@ -138,12 +108,30 @@ $(function () {
 		});
 	})
 
+	$okbutton.click(function(event) {
+		if ($('#winlose').hasClass('win')) {
+			playerScore += 30;
+		} else {
+			endGame();
+		}
+		$bossLevel.fadeOut(900);
+		setTimeout(function () {
+			$main.fadeIn('slow');
+		},900)
+		pauseSound();
+
+	})
 	//pokemonMovement(numberOfPokemon, $pokemon);
 
 	function playSound(path) {
         var audioElement = document.createElement('audio');
   		audioElement.setAttribute('src', path);
   		audioElement.play();
+    }
+
+    function pauseSound() {
+    	var sound = document.getElementById('battleMusic');
+    	sound.pause();
     }
 
 	// function generatePokemon (num, pokeId) {
@@ -192,8 +180,8 @@ $(function () {
 		var newObj = '';
 		//debugger
 		switch (playerScore) {
-			case 0:
-			case 50: 
+			case 0: newObj = newObjective(num); break;
+			case 20: boss(); break;
 			case 100:
 			case 200: newObj = newObjective(num);
 				playSound(levelUpAudio);
@@ -202,6 +190,18 @@ $(function () {
 			default: newObj = newObject;
 		}
 		return newObj;
+	}
+
+	function boss () {
+		var sound = document.getElementById('battleMusic');
+    	sound.play();
+		setTimeout(function() {
+			$main.fadeOut(900);
+		},900);
+		setTimeout(function() {
+			$bossLevel.fadeIn('slow');
+		},1000)
+		
 	}
 
 	function endGame () {

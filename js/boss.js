@@ -1,5 +1,7 @@
 $(function() {
 
+	var $main = $('main');
+	var $bossLevel = $('#boss');
 	var bossHealth = 500;
 	var remHealth = 100;
 	var $bossHealthbar = $('#bosshealthbar');
@@ -7,6 +9,8 @@ $(function() {
 	var pikaremHealth = 100;
 	var $pikachuHealthbar = $('#pikachuhealthbar');
 	var $hideAttacks = $('#hideAttacks');
+	var $winlose = $('#winlose');
+	$winlose.hide();
 	var pp = 0;
 	var count = 0;
 
@@ -44,7 +48,7 @@ $(function() {
 			$pp1.html(pp);
 		}
 		if (remHealth <= 0) {
-			endGame('player');
+			endLevel('human');
 		} else {
 			count++;
 			play();
@@ -60,7 +64,7 @@ $(function() {
 			$pp2.html(pp);
 		}
 		if (remHealth <= 0) {
-			endGame('player');
+			endLevel('human');
 		} else {
 			count++;
 			play();
@@ -76,7 +80,7 @@ $(function() {
 			$pp3.html(pp);
 		}
 		if (remHealth <= 0) {
-			endGame('player');
+			endLevel('human');
 		} else {
 			count++;
 			play();
@@ -93,7 +97,7 @@ $(function() {
 		}
 		
 		if (remHealth <= 0) {
-			endGame('player');
+			endLevel('human');
 		} else {
 			count++;
 			play();
@@ -154,20 +158,27 @@ $(function() {
 				break;	
 		}
 		if (pikaremHealth <= 0) {
-			endGame('comp');
+			endLevel('comp');
 		} else {
 			count++;
 			play();
 		}
 	}
 
-	function endGame (player) {
+	function endLevel (player) {
+		$winlose.fadeIn('slow');
 		switch (player) {
 			case 'human':
 				console.log('human won');
-
+				$('#winlose p').html('You won! +30 points');
+				$winlose.addClass('win');
+				break;
+			
 			case 'comp':
 				console.log('comp won');
+				$('#winlose p').html('Pikachu fainted!');
+				$winlose.addClass('lose');
+				break;
 		}
 	}
 
