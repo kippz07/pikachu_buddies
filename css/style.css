@@ -41,17 +41,21 @@ main {
 }
 
 #attacks button {
-	width: 200px;
-	font-size: 20px;
+	width: 230px;
+	font-size: 17px;
 	margin: 5px;
-	padding: 10px;
+	padding: 3px;
 }
 
 #attacks {
-	width: 200px;
+	width: 260px;
     position: absolute;
-    bottom: 150px;
-    right: 120px;
+    bottom: 135px;
+    right: 103px;
+}
+
+#attacks button p {
+	display: inline-block;
 }
 
 #endScreen {
