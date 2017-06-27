@@ -40,11 +40,31 @@ main {
     background: red;
 }
 
+#pikachuboss {
+	height: 160px;
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+}
+
+#pikachuhealth {
+    width: 240px;
+    height: 18px;
+    border-style: solid;
+    position: absolute;
+    bottom: 50px;
+    right: 150px;
+}
+
 #attacks button {
 	width: 230px;
 	font-size: 17px;
 	margin: 5px;
 	padding: 3px;
+	border-style: ridge;
+    border-color: red;
+    background-color: yellow;
+    border-radius: 25px;
 }
 
 #attacks {
@@ -56,6 +76,7 @@ main {
 
 #attacks button p {
 	display: inline-block;
+	font-family: 'Marker Felt';
 }
 
 #endScreen {

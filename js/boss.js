@@ -62,6 +62,11 @@ $(function() {
 		$pp4.html(pp);
 	})
 
-
+	function randomNumber (number) {
+		var min = Math.ceil(0);
+		var max = Math.floor(number);
+		var num = Math.floor(Math.random() * (max - min)) + min;
+		return num;
+	}
 
 });
