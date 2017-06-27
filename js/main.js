@@ -29,6 +29,9 @@ $(function () {
 
 	var $leaderboard = $('list');
 
+	var bossHealth = 500;
+	var remHealth = 100;
+	var $bossHealthbar = $('.healthbar');
 
 	var newObject = '';
 	var playerScore = 0;
@@ -47,6 +50,28 @@ $(function () {
 	var iceBeam = {"dmg": 90, "acc": 100, "pp": 10, "flinch": 10};
 	var dragonPulse = {"dmg": 85, "acc": 100, "pp": 10, "flinch": 0};
 
+	var $att1 = $('#attack1');
+	var $att2 = $('#attack2');
+	var $att3 = $('#attack3');
+	var $att4 = $('#attack4');
+
+	$att1.click(function (event) {
+		console.log(thunderbolt.dmg);
+		remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
+		$bossHealthbar.css('width', remHealth + '%');
+	})
+
+	$att2.click(function (event) {
+		console.log(hiddenPower.dmg);
+	})
+
+	$att3.click(function (event) {
+		console.log(thunder.dmg);
+	})
+
+	$att4.click(function (event) {
+		console.log(thunderShock.dmg);
+	})
 
 	// var moveInterval = setInterval(function () {
 	// 	pokemonMovement(numberOfPokemon, $pokemon)
