@@ -56,8 +56,8 @@ $(function () {
 	newObject = levels(initialNum);
 	
 
-	$main.on('click', '.pokemon', function (event) {
-		//debugger
+	$pokemon.click(function (event) {
+		debugger
 		newNum = randomNumber(3);
 		
 		var str = '.' + newObject;
@@ -191,7 +191,7 @@ $(function () {
 		//debugger
 		switch (playerScore) {
 			case 0: newObj = newObjective(num); break;
-			case 20: boss(); break;
+			case 20: boss();
 			case 100:
 			case 200: newObj = newObjective(num);
 				playSound(levelUpAudio);
