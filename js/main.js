@@ -38,9 +38,22 @@ $(function () {
 	var leaderboardArray = [];
 	var objNumber = localStorage.length;
 
-	var moveInterval = setInterval(function () {
-		pokemonMovement(numberOfPokemon, $pokemon)
-	},2000);
+	var thunderbolt = {"dmg": 95, "acc": 100, "pp": 15, "flinch": 10};
+	var hiddenPower = {"dmg": 60, "acc": 100, "pp": 15, "flinch": 0};
+	var thunder = {"dmg": 110, "acc": 70, "pp": 10, "flinch": 10};
+	var thunderShock = {"dmg": 40, "acc": 100, "pp": 30, "flinch": 10};
+	var hydroPump = {"dmg": 110, "acc": 80, "pp": 5, "flinch": 0};
+	var darkPulse = {"dmg": 80, "acc": 100, "pp": 15, "flinch": 10};
+	var iceBeam = {"dmg": 90, "acc": 100, "pp": 10, "flinch": 10};
+	var dragonPulse = {"dmg": 85, "acc": 100, "pp": 10, "flinch": 0};
+
+
+	// var moveInterval = setInterval(function () {
+	// 	pokemonMovement(numberOfPokemon, $pokemon)
+	// },2000);
+
+	$main.hide();
+
 	//debugger
 	var initialNum = randomNumber(3);
 	levels(initialNum);
@@ -100,7 +113,7 @@ $(function () {
 		});
 	})
 
-	pokemonMovement(numberOfPokemon, $pokemon);
+	//pokemonMovement(numberOfPokemon, $pokemon);
 
 	function playSound(path) {
         var audioElement = document.createElement('audio');
