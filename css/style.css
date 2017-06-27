@@ -67,6 +67,16 @@ main {
     border-radius: 25px;
 }
 
+#hideAttacks {
+    width: 260px;
+    position: absolute;
+    bottom: 130px;
+    right: 109px;
+    height: 297px;
+    z-index: 1;
+}
+
+
 #attacks {
 	width: 260px;
     position: absolute;
