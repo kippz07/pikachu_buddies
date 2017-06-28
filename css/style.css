@@ -44,6 +44,19 @@ main {
     padding: 0 30px;
 }
 
+#instructionsdiv button {
+	font-family: 'Marker Felt';
+    position: absolute;
+    left: 269px;
+    font-size: 32px;
+    margin-bottom: 40px;
+    border-style: dashed;
+    border-color: black;
+    border-radius: 14px;
+    padding: 7px;
+    background-color: yellow;
+}
+
 h3 {
 	font-family: 'Marker Felt';
 }
