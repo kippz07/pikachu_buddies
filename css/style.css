@@ -6,6 +6,7 @@ main {
 	position: relative;
 	background-image: url('../images/scene3.png');
 	background-size: 910px;
+	cursor: url(../images/pokeball.png), auto;
 }
 
 button:focus {
