@@ -16,6 +16,9 @@ $(function() {
 	var $pikachu = $('#pikachuboss');
 	var pikachuhit = 'raw/raichu.wav';
 	var blastoisehit = 'raw/blastoise.wav';
+	var $turn = $('#turn');
+	var $missed = $('#missed');
+	$missed.hide();
 	var pp = 0;
 	var count = 0;
 
@@ -50,11 +53,14 @@ $(function() {
 		if ((pp > 0) && (accuracy < thunderbolt.acc)) {
 			remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp1.html(pp);
+			$pp1.html(thunderbolt.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
-			console.log('missed');
+			$missed.show();
+				setTimeout(function () {
+				$missed.fadeOut(600);
+			},300);
 		}
 		pp--;
 		if (remHealth <= 0) {
@@ -71,11 +77,14 @@ $(function() {
 		if ((pp > 0) && (accuracy < hiddenPower.acc)) {
 			remHealth = remHealth - (hiddenPower.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp2.html(pp);
+			$pp2.html(hiddenPower.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
-			console.log('missed');
+			$missed.show();
+				setTimeout(function () {
+				$missed.fadeOut(600);
+			},300);
 		}
 		pp--;
 		if (remHealth <= 0) {
@@ -92,11 +101,14 @@ $(function() {
 		if ((pp > 0) && (accuracy < thunder.acc)) {
 			remHealth = remHealth - (thunder.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp3.html(pp);
+			$pp3.html(thunder.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
-			console.log('missed');
+			$missed.show();
+				setTimeout(function () {
+				$missed.fadeOut(600);
+			},300);
 		}
 		pp--;
 		if (remHealth <= 0) {
@@ -113,11 +125,14 @@ $(function() {
 		if ((pp > 0) && (accuracy < thunderShock.acc) ) {
 			remHealth = remHealth - (thunderShock.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp4.html(pp);
+			$pp4.html(thunderShock.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
-			console.log('missed');
+			$missed.show();
+				setTimeout(function () {
+				$missed.fadeOut(600);
+			},300);
 		}
 		pp--;
 		if (remHealth <= 0) {
@@ -136,13 +151,23 @@ $(function() {
 
 	function play () {
 		if (count % 2 === 0) {
-			$hideAttacks.hide();
+			
+			setTimeout(function() {
+				$turn.html('Your turn!');
+				$hideAttacks.hide();
+			},1000);
+			
+
 
 		} else {
 			$hideAttacks.show();
-			setTimeout(function () {
+			setTimeout(function() {
+				$turn.html('Opponent\'s turn');
+				setTimeout(function () {
 				blastoiseAttack();
+				},1000);
 			},1000);
+			
 		}
 	}
 
@@ -159,7 +184,11 @@ $(function() {
 					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 					console.log('attack1');
 				} else {
-					console.log('missed');
+					$missed.show();
+						setTimeout(function () {
+						$missed.fadeOut(600);
+					},300);
+					
 				}
 				pp--;
 				break;
@@ -173,7 +202,10 @@ $(function() {
 					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 					console.log('attack2');
 				} else {
-					console.log('missed');
+					$missed.show();
+						setTimeout(function () {
+						$missed.fadeOut(600);
+					},300);
 				}
 				pp--;
 				break;
@@ -187,7 +219,10 @@ $(function() {
 					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 					console.log('attack3');
 				} else {
-					console.log('missed');
+					$missed.show();
+						setTimeout(function () {
+						$missed.fadeOut(600);
+					},300);
 				}
 				pp--;
 				break;
@@ -201,7 +236,10 @@ $(function() {
 					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 					console.log('attack4');
 				} else {
-					console.log('missed');
+					$missed.show();
+						setTimeout(function () {
+						$missed.fadeOut(600);
+					},300);
 				}
 				pp--;	
 				break;	

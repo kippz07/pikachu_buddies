@@ -50,6 +50,23 @@ main {
     border-width: 3px;
 }
 
+#turn {
+	text-align: center;
+    font-family: 'Marker Felt';
+    padding-top: 45px;
+    font-size: 42px;
+}
+
+#missed {
+	font-family: 'Marker Felt';
+    font-size: 102px;
+    position: absolute;
+    left: 271px;
+    z-index: 1;
+    top: 175px;
+    color: red;
+}
+
 #blastoise {
 	position: absolute;
     bottom: 97px;
