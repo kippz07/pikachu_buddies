@@ -32,6 +32,8 @@ $(function () {
 	var $okbutton = $('#winlose button');
 
 	var $leaderboard = $('list');
+	var $board = $('#leaderboard');
+	$board.hide();
 
 	var bossHealth = 500;
 	var remHealth = 100;
@@ -57,7 +59,7 @@ $(function () {
 	
 
 	$pokemon.click(function (event) {
-		debugger
+		//debugger
 		newNum = randomNumber(3);
 		
 		var str = '.' + newObject;
@@ -97,7 +99,7 @@ $(function () {
 		var data = {'name': $submitText.val(), 'score': playerScore};
 		leaderboardArray.push(data);
 		storeScores(leaderboardArray);
-		//console.log(leaderboardArray[0]);
+		$board.show();
 		$endScore.hide();
 		$submitButton.hide();
 		$submitText.hide();
@@ -190,8 +192,8 @@ $(function () {
 		var newObj = '';
 		//debugger
 		switch (playerScore) {
-			case 0: newObj = newObjective(num); break;
-			case 20: boss();
+			case 0: newObj = newObjective(num);
+			case 20: boss(); newObj = newObjective(num); break;
 			case 100:
 			case 200: newObj = newObjective(num);
 				playSound(levelUpAudio);
@@ -203,7 +205,7 @@ $(function () {
 	}
 
 	function boss () {
-		debugger
+		//debugger
 		var sound = document.getElementById('battleMusic');
     	sound.play();
     	clearInterval(moveInterval);

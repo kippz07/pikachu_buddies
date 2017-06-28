@@ -19,6 +19,37 @@ main {
     background-repeat: no-repeat;
 }
 
+#winlose {
+	width: 380px;
+    background-color: yellow;
+    position: absolute;
+    top: 180px;
+    left: 298px;
+    z-index: 1;
+    border-style: ridge;
+    border-color: red;
+    border-radius: 17px;
+}
+
+#winlose p {
+	text-align: center;
+	font-family: 'Marker Felt';
+	font-size: 30px;
+}
+
+#winlose button {
+	margin-left: 162px;
+    font-family: 'Marker Felt';
+    font-size: 25px;
+    margin-bottom: 31px;
+    border-style: dashed;
+    background-color: yellow;
+    border-color: black;
+    border-radius: 10px;
+    padding: 6px 17px;
+    border-width: 3px;
+}
+
 #blastoise {
 	position: absolute;
     bottom: 97px;
@@ -121,12 +152,14 @@ main {
     color: #482835;
     margin-top: -3px;
     display: inline-block;
-    margin-left: 345px;
+/*    margin-left: 345px;*/
     border-style: dashed;
     border-color: #482835;
     padding: 18px;
     border-radius: 42px;
     border-width: 6px;
+    position: absolute;
+    left: 351px;
 }
 
 #playAgain:hover {
