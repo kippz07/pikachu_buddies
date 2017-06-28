@@ -19,7 +19,6 @@ $(function() {
 	var $turn = $('#turn');
 	var $missed = $('#missed');
 	$missed.hide();
-	var pp = 0;
 	var count = 0;
 	var damage = 0;
 
@@ -49,9 +48,7 @@ $(function() {
 
 	$att1.click(function (event) {
 		var accuracy = randomNumber(100);
-		pp = thunderbolt.pp;
-		damage = thunderbolt.dmg;
-		if ((pp > 0) && (accuracy < thunderbolt.acc)) {
+		if (accuracy < thunderbolt.acc){
 			remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			playSound(blastoisehit);
@@ -62,7 +59,6 @@ $(function() {
 				$missed.fadeOut(600);
 			},300);
 		}
-		pp--;
 		if (remHealth <= 0) {
 			endLevel('human');
 		} else {
@@ -73,8 +69,7 @@ $(function() {
 
 	$att2.click(function (event) {
 		var accuracy = randomNumber(100);
-		pp = hiddenPower.pp;
-		if ((pp > 0) && (accuracy < hiddenPower.acc)) {
+		if (accuracy < hiddenPower.acc) {
 			remHealth = remHealth - (hiddenPower.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			playSound(blastoisehit);
@@ -85,7 +80,6 @@ $(function() {
 				$missed.fadeOut(600);
 			},300);
 		}
-		pp--;
 		if (remHealth <= 0) {
 			endLevel('human');
 		} else {
@@ -96,8 +90,7 @@ $(function() {
 
 	$att3.click(function (event) {
 		var accuracy = randomNumber(100);
-		pp = thunder.pp;
-		if ((pp > 0) && (accuracy < thunder.acc)) {
+		if (accuracy < thunder.acc) {
 			remHealth = remHealth - (thunder.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			playSound(blastoisehit);
@@ -108,7 +101,6 @@ $(function() {
 				$missed.fadeOut(600);
 			},300);
 		}
-		pp--;
 		if (remHealth <= 0) {
 			endLevel('human');
 		} else {
@@ -119,8 +111,7 @@ $(function() {
 
 	$att4.click(function (event) {
 		var accuracy = randomNumber(100);
-		pp = thunderShock.pp;
-		if ((pp > 0) && (accuracy < thunderShock.acc) ) {
+		if (accuracy < thunderShock.acc) {
 			remHealth = remHealth - (thunderShock.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			playSound(blastoisehit);
@@ -131,7 +122,6 @@ $(function() {
 				$missed.fadeOut(600);
 			},300);
 		}
-		pp--;
 		if (remHealth <= 0) {
 			endLevel('human');
 		} else {
@@ -141,21 +131,19 @@ $(function() {
 	})
 
 	$okbutton.click(function () {
-		$bossLevel.hide();
+		//$bossLevel.hide();
+		resetLevel();
 	})
 
 	play();
 
 	function play () {
 		if (count % 2 === 0) {
-			
 			setTimeout(function() {
 				$turn.html('Your turn!');
 				$hideAttacks.hide();
 			},1000);
 			
-
-
 		} else {
 			$hideAttacks.show();
 			setTimeout(function() {
@@ -173,8 +161,7 @@ $(function() {
 		var accuracy = randomNumber(100);
 		switch (number) {
 			case 0:
-				pp = hydroPump.pp;
-				if ((pp > 0) && (accuracy < hydroPump.acc)) {
+				if (accuracy < hydroPump.acc) {
 					pikaremHealth = pikaremHealth - (hydroPump.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					playSound(pikachuhit);
@@ -187,12 +174,10 @@ $(function() {
 					},300);
 					
 				}
-				pp--;
 				break;
 				
 			case 1:
-				pp = darkPulse.pp;
-				if ((pp > 0) && (accuracy < darkPulse.acc)) {
+				if (accuracy < darkPulse.acc) {
 					pikaremHealth = pikaremHealth - (darkPulse.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					playSound(pikachuhit);
@@ -204,12 +189,10 @@ $(function() {
 						$missed.fadeOut(600);
 					},300);
 				}
-				pp--;
 				break;
 				
 			case 2:
-				pp = iceBeam.pp;
-				if ((pp > 0) && (accuracy < iceBeam.acc)) {
+				if (accuracy < iceBeam.acc) {
 					pikaremHealth = pikaremHealth - (iceBeam.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					playSound(pikachuhit);
@@ -221,12 +204,10 @@ $(function() {
 						$missed.fadeOut(600);
 					},300);
 				}
-				pp--;
 				break;
 				
 			case 3:
-				pp = dragonPulse.pp;
-				if ((pp > 0) && (accuracy < dragonPulse)) {
+				if (accuracy < dragonPulse) {
 					pikaremHealth = pikaremHealth - (dragonPulse.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
 					playSound(pikachuhit);
@@ -238,7 +219,6 @@ $(function() {
 						$missed.fadeOut(600);
 					},300);
 				}
-				pp--;	
 				break;	
 		}
 		if (pikaremHealth <= 0) {
@@ -252,6 +232,7 @@ $(function() {
 	function playSound(path) {
         var audioElement = document.createElement('audio');
   		audioElement.setAttribute('src', path);
+  		audioElement.currentTime = 0;
   		audioElement.play();
     }
 
@@ -271,6 +252,15 @@ $(function() {
 				$winlose.addClass('lose');
 				break;
 		}
+	}
+
+	function resetLevel () {
+		count = 0;
+		$pikachuHealthbar.css('width', '100%');
+		$bossHealthbar.css('width', '100%');
+		$winlose.hide();
+		remHealth = 100;
+		pikaremHealth = 100;
 	}
 
 	function randomNumber (number) {

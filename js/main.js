@@ -53,6 +53,8 @@ $(function () {
 
 	var initialNum = randomNumber(3);
 
+	document.getElementById('openingMusic').play();
+
 	$beginbutton.click(function (event) {
 		setTimeout(function() {
 			$('#instructionsPage').fadeOut(900);
@@ -60,8 +62,9 @@ $(function () {
 		setTimeout(function() {
 			$main.fadeIn(900);
 		},1900)
-		
+		pauseSound('openingMusic');
 		runGame();
+		document.getElementById('mainMusic').play();
 	})
 	
 
@@ -124,7 +127,11 @@ $(function () {
 
 	$okbutton.click(function(event) {
 		//debugger
-		if ($('#winlose').hasClass('win')) {
+		if ($('#winlose').hasClass('lose')) {
+			totalLives = 0;
+			endGame();
+			$bossLevel.fadeOut(900);
+		} else {
 			playerScore += 30;
 			$score.html(playerScore);
 			$bossLevel.fadeOut(900);
@@ -132,18 +139,13 @@ $(function () {
 				$main.fadeIn('slow');
 			},900)
 			moveInterval = setInterval(function () {
-			pokemonMovement(numberOfPokemon, $pokemon)
-	},2000);
-		} else {
-			totalLives = 0;
-			$bossLevel.fadeOut(900);
-			endGame();
+				pokemonMovement(numberOfPokemon, $pokemon)
+			},2000);
 		}
-		
-		pauseSound();
-
+		pauseSound('battleMusic');
+		document.getElementById('mainMusic').play();
 	})
-	//pokemonMovement(numberOfPokemon, $pokemon);
+
 
 	function playSound(path) {
         var audioElement = document.createElement('audio');
@@ -151,16 +153,11 @@ $(function () {
   		audioElement.play();
     }
 
-    function pauseSound() {
-    	var sound = document.getElementById('battleMusic');
+    function pauseSound(id) {
+    	var sound = document.getElementById(id);
     	sound.pause();
+    	sound.currentTime = 0;
     }
-
-	// function generatePokemon (num, pokeId) {
-	// 	var $newPokemon = $pokemon.eq(randomNumber(num));
-	// 	return '<img id="' + pokeId + '" class="' + $newPokemon.attr('class') + '" src="' + $newPokemon.attr('src') + '">';
-	// }
-
 
 	function runGame () {
 		moveInterval = setInterval(function () {
@@ -209,7 +206,7 @@ $(function () {
 
 	function levels (num) {
 		var newObj = '';
-		var bossrand = randomNumber(6);
+		var bossrand = randomNumber(4);
 		var typerand = randomNumber(9);
 		console.log(bossrand + ", " + typerand);
 		//debugger
@@ -235,6 +232,7 @@ $(function () {
 
 	function boss () {
 		//debugger
+		pauseSound('mainMusic');
 		var sound = document.getElementById('battleMusic');
     	sound.play();
     	clearInterval(moveInterval);
@@ -292,6 +290,7 @@ $(function () {
 		$lives.text(totalLives);
 		$pikachu.attr('src', 'images/pikachuHi.png');
 		$submitText.text('');
+		$winlose.removeClass();
 	}
 
 	function randomClass (number) {
