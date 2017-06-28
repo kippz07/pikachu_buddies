@@ -37,6 +37,31 @@ main {
 	font-family: 'Marker Felt';
 }
 
+#instructionsdiv p {
+	font-family: 'Marker Felt';
+	text-align: justify;
+    font-size: 20px;
+    padding: 0 30px;
+}
+
+h3 {
+	font-family: 'Marker Felt';
+}
+
+.pic {
+	display: inline-block;
+	padding: 0 45px;
+}
+
+.pic p {
+	text-align: center;
+    font-family: 'Marker Felt';
+}
+
+.pic img {
+	height: 139px;
+}
+
 #boss {
 	height: 560px;
 	width: 900px;
