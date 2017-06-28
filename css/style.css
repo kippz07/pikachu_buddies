@@ -8,6 +8,30 @@ main {
 	background-size: 910px;
 }
 
+#instructionsPage {
+	height: 560px;
+	width: 900px;
+	background-color: lightblue;
+	margin: auto;
+	position: relative;
+	background-image: url('../images/startscene.jpg');
+	background-size: 995px;
+    background-repeat: no-repeat;
+}
+
+#instructionsdiv {
+	background-color: yellow;
+    height: 434px;
+    width: 695px;
+    position: absolute;
+    top: 60px;
+    left: 98px;
+    border-style: ridge;
+    border-color: red;
+    border-radius: 30px;
+    overflow-y: auto;
+}
+
 #boss {
 	height: 560px;
 	width: 900px;

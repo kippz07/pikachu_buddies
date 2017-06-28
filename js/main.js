@@ -1,6 +1,7 @@
 $(function () {
 
 	var $main = $('main');
+	$main.hide();
 	var $pokemon = $('.pokemon');
 	var $score = $('#scoreNumber');
 	var $lives = $('#livesNumber');
@@ -192,15 +193,21 @@ $(function () {
 		var newObj = '';
 		//debugger
 		switch (playerScore) {
-			case 0: newObj = newObjective(num);
-			case 20: boss(); newObj = newObjective(num); break;
-			case 100:
-			case 200: newObj = newObjective(num);
-				playSound(levelUpAudio);
-				break;
+			case 0: newObj = newObjective(num); break;
 
 			default: newObj = newObject;
 		}
+
+		if (playerScore % 50 === 0) {
+			newObj = newObjective(num);
+			playSound(levelUpAudio);
+		} 
+
+		if ((playerScore % 50 === 30)){
+			boss();
+			newObj = newObjective(num);
+		}
+
 		return newObj;
 	}
 
