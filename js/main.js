@@ -123,6 +123,7 @@ $(function () {
 		setTimeout(function () {
 			$playAgain.fadeIn('slow');
 		},1000);
+
 	})
 
 	$okbutton.click(function(event) {
@@ -251,6 +252,7 @@ $(function () {
 			$endScore.text('You got a score of: ' + playerScore);
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			clearInterval(moveInterval);
+			pauseSound('mainMusic');
 			$main.fadeOut(900);
 			$bossLevel.hide();
 			setTimeout(function () {
