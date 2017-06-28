@@ -139,8 +139,17 @@ main {
 }
 
 #attacks button p {
-	display: inline-block;
 	font-family: 'Marker Felt';
+	margin-bottom: 0px;
+}
+
+.text {
+	display: inline-block;
+    font-size: 11px;
+}
+
+.space {
+	margin-right: 30px;
 }
 
 #endScreen {

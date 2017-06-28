@@ -21,6 +21,7 @@ $(function() {
 	$missed.hide();
 	var pp = 0;
 	var count = 0;
+	var damage = 0;
 
 
 	var thunderbolt = {"dmg": 95, "acc": 70, "pp": 15, "flinch": 10};
@@ -37,23 +38,22 @@ $(function() {
 	var $att3 = $('#attack3');
 	var $att4 = $('#attack4');
 
-	var $pp1 = $('#pp1');
-	var $pp2 = $('#pp2');
-	var $pp3 = $('#pp3');
-	var $pp4 = $('#pp4');
-
-	$pp1.html(thunderbolt.pp);
-	$pp2.html(hiddenPower.pp);
-	$pp3.html(thunder.pp);
-	$pp4.html(thunderShock.pp);
+	$('#pp1').html(thunderbolt.acc + '%');
+	$('#pp2').html(hiddenPower.acc + '%');
+	$('#pp3').html(thunder.acc + '%');
+	$('#pp4').html(thunderShock.acc + '%');
+	$('#dmg1').html(thunderbolt.dmg);
+	$('#dmg2').html(hiddenPower.dmg);
+	$('#dmg3').html(thunder.dmg);
+	$('#dmg4').html(thunderShock.dmg);
 
 	$att1.click(function (event) {
 		var accuracy = randomNumber(100);
 		pp = thunderbolt.pp;
+		damage = thunderbolt.dmg;
 		if ((pp > 0) && (accuracy < thunderbolt.acc)) {
 			remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp1.html(thunderbolt.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
@@ -77,7 +77,6 @@ $(function() {
 		if ((pp > 0) && (accuracy < hiddenPower.acc)) {
 			remHealth = remHealth - (hiddenPower.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp2.html(hiddenPower.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
@@ -101,7 +100,6 @@ $(function() {
 		if ((pp > 0) && (accuracy < thunder.acc)) {
 			remHealth = remHealth - (thunder.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp3.html(thunder.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
@@ -125,7 +123,6 @@ $(function() {
 		if ((pp > 0) && (accuracy < thunderShock.acc) ) {
 			remHealth = remHealth - (thunderShock.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			$pp4.html(thunderShock.acc);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
