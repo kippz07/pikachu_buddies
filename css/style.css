@@ -8,6 +8,14 @@ main {
 	background-size: 910px;
 }
 
+button:focus {
+	outline: 0;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
 #instructionsPage {
 	height: 560px;
 	width: 900px;

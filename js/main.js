@@ -117,6 +117,9 @@ $(function () {
 		}, function () {
 		 	$popup.hide();
 		});
+		setTimeout(function () {
+			$playAgain.fadeIn('slow');
+		},1000);
 	})
 
 	$okbutton.click(function(event) {
@@ -265,9 +268,7 @@ $(function () {
 			 		$enterName.fadeIn();
 			 	});
 			},3000);
-			setTimeout(function () {
-				$playAgain.fadeIn('slow');
-			},4000);
+			
 		}
 	}
 
