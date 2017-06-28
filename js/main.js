@@ -167,7 +167,7 @@ $(function () {
 			pokemonMovement(numberOfPokemon, $pokemon)
 		},2000);
 
-		levels(initialNum);
+		//levels(initialNum);
 		newObject = levels(initialNum);
 	}
 
@@ -209,21 +209,25 @@ $(function () {
 
 	function levels (num) {
 		var newObj = '';
+		var bossrand = randomNumber(6);
+		var typerand = randomNumber(9);
+		console.log(bossrand + ", " + typerand);
 		//debugger
 		switch (playerScore) {
 			case 0: newObj = newObjective(num); break;
-
 			default: newObj = newObject;
 		}
-
-		if (playerScore % 50 === 0) {
-			newObj = newObjective(num);
-			playSound(levelUpAudio);
-		} 
-
-		if ((playerScore % 50 === 30)){
-			boss();
-			newObj = newObjective(num);
+		if (playerScore != 0) {
+			if ((bossrand === 3) && (typerand === 7)) {
+				boss();
+				newObj = newObjective(num);
+			} else if (bossrand === 3) {
+				boss();
+				newObj = newObjective(num);
+			} else if (typerand === 7) {
+				newObj = newObjective(num);
+				playSound(levelUpAudio);
+			}
 		}
 
 		return newObj;
