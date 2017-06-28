@@ -12,6 +12,8 @@ $(function() {
 	var $winlose = $('#winlose');
 	$winlose.hide();
 	var $okbutton = $('#winlose button');
+	var $blastoise = $('#blastoise');
+	var $pikachu = $('#pikachuboss');
 	var pp = 0;
 	var count = 0;
 
@@ -47,6 +49,7 @@ $(function() {
 			remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			$pp1.html(pp);
+			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
 			console.log('missed');
 		}
@@ -66,6 +69,7 @@ $(function() {
 			remHealth = remHealth - (hiddenPower.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			$pp2.html(pp);
+			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
 			console.log('missed');
 		}
@@ -85,6 +89,7 @@ $(function() {
 			remHealth = remHealth - (thunder.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			$pp3.html(pp);
+			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
 			console.log('missed');
 		}
@@ -104,6 +109,7 @@ $(function() {
 			remHealth = remHealth - (thunderShock.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			$pp4.html(pp);
+			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
 			console.log('missed');
 		}
@@ -143,6 +149,8 @@ $(function() {
 				if ((pp > 0) && (accuracy < hydroPump.acc)) {
 					pikaremHealth = pikaremHealth - (hydroPump.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+					console.log('attack1');
 				} else {
 					console.log('missed');
 				}
@@ -154,6 +162,8 @@ $(function() {
 				if ((pp > 0) && (accuracy < darkPulse.acc)) {
 					pikaremHealth = pikaremHealth - (darkPulse.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+					console.log('attack2');
 				} else {
 					console.log('missed');
 				}
@@ -165,6 +175,8 @@ $(function() {
 				if ((pp > 0) && (accuracy < iceBeam.acc)) {
 					pikaremHealth = pikaremHealth - (iceBeam.dmg * 100 / pikachuHealth);
 					$pikachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+					console.log('attack3');
 				} else {
 					console.log('missed');
 				}
@@ -175,7 +187,9 @@ $(function() {
 				pp = dragonPulse.pp;
 				if ((pp > 0) && (accuracy < dragonPulse)) {
 					pikaremHealth = pikaremHealth - (dragonPulse.dmg * 100 / pikachuHealth);
-					$pikachuHealthbar.css('width', pikaremHealth + '%');	
+					$pikachuHealthbar.css('width', pikaremHealth + '%');
+					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+					console.log('attack4');
 				} else {
 					console.log('missed');
 				}
