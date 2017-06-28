@@ -32,6 +32,11 @@ main {
     overflow-y: auto;
 }
 
+#instructionsdiv h1 {
+	text-align: center;
+	font-family: 'Marker Felt';
+}
+
 #boss {
 	height: 560px;
 	width: 900px;
