@@ -17,6 +17,7 @@ main {
 	background-image: url('../images/startscene.jpg');
 	background-size: 995px;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 
 #instructionsdiv {

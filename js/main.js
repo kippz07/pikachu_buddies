@@ -31,6 +31,7 @@ $(function () {
 	var $endScore = $('#endScore');
 	$endScore.hide();
 	var $okbutton = $('#winlose button');
+	var $beginbutton = $('#begin');
 
 	var $leaderboard = $('list');
 	var $board = $('#leaderboard');
@@ -48,15 +49,20 @@ $(function () {
 	var leaderboardArray = [];
 	var objNumber = localStorage.length;
 
-	var moveInterval = setInterval(function () {
-		pokemonMovement(numberOfPokemon, $pokemon)
-	},2000);
+	var moveInterval;
 
-	//debugger
 	var initialNum = randomNumber(3);
 
-	levels(initialNum);
-	newObject = levels(initialNum);
+	$beginbutton.click(function (event) {
+		setTimeout(function() {
+			$('#instructionsPage').fadeOut(900);
+		},900);
+		setTimeout(function() {
+			$main.fadeIn(900);
+		},1900)
+		
+		runGame();
+	})
 	
 
 	$pokemon.click(function (event) {
@@ -152,6 +158,15 @@ $(function () {
 	// 	return '<img id="' + pokeId + '" class="' + $newPokemon.attr('class') + '" src="' + $newPokemon.attr('src') + '">';
 	// }
 
+
+	function runGame () {
+		moveInterval = setInterval(function () {
+			pokemonMovement(numberOfPokemon, $pokemon)
+		},2000);
+
+		levels(initialNum);
+		newObject = levels(initialNum);
+	}
 
 	function pokemonMovement (num, $pokemon) {
 		var $this = $pokemon.eq(randomNumber(num));
