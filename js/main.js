@@ -267,6 +267,7 @@ $(function () {
 			pauseSound('mainMusic');
 			$main.fadeOut(900);
 			$bossLevel.hide();
+			$board.hide();
 			setTimeout(function () {
 				$endscreen.fadeIn('slow');
 			},1000);
@@ -366,11 +367,11 @@ $(function () {
 		}
 		if (scores.length < 5) {
 			for (var i = 0; i < scores.length; i++) {
-				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
+				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score.toString() + '</p></li>');
 			}
 		} else {
 			for (var i = 0; i < 5; i++) {
-				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score + '</p></li>');
+				$('ol').append('<li><p class="leadname">' + scores[i].name + '</p><p class="leadscore">score: ' + scores[i].score.toString() + '</p></li>');
 			}
 		}
 	}
