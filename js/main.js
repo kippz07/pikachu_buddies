@@ -4,7 +4,6 @@ $(function () {
 	$main.hide();
 	var $pokemon = $('.pokemon');
 	var $score = $('#scoreNumber');
-	//var $lives = $('#livesNumber');
 	var $pikachu = $('#pikachu');
 	var happyAudio = 'raw/Pikaaaa.mp3';
 	var sadAudio = 'raw/Attack.mp3';
@@ -109,7 +108,7 @@ $(function () {
 	$submitButton.click(function () {
 		var data = {'name': $submitText.val(), 'score': playerScore};
 		leaderboardArray.push(data);
-		storeScores(leaderboardArray);
+		storeScores(data);
 		$board.show();
 		$endScore.hide();
 		$submitButton.hide();
@@ -305,7 +304,7 @@ $(function () {
 		//$lives.text(totalLives);
 		$pikachu.attr('src', 'images/pikachuHi.png');
 		$submitText.text('');
-		$winlose.removeClass();
+		$('#winlose').removeClass();
 	}
 
 	function randomClass (number) {
@@ -338,25 +337,19 @@ $(function () {
 	} 
 
 	function storeScores (array) {
-		//debugger
+		debugger
 		var objects = {};
 		var strings= '';
-		
-		for (var i = 0; i < array.length; i++) {
-			objects.name = array[i].name;
-			objects.score = array[i].score;
-			strings += JSON.stringify(objects);
-			if (i != array.length-1) {
-				strings += ', ';
-			}
-			localStorage.setItem(objNumber.toString(), strings);
-			objNumber = localStorage.length;
-		}
+		var theObject = JSON.stringify(array);
+
+		localStorage.setItem(objNumber.toString(), theObject);
+		objNumber = localStorage.length;
+
 		retrieveScores();
 	}
 	
 	function retrieveScores () {
-		//debugger
+		debugger
 		var scores = [];
 
 		for (var i = 0; i < objNumber; i++) {
