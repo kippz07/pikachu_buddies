@@ -132,6 +132,7 @@ $(function () {
 			totalLives = 0;
 			endGame();
 			$bossLevel.fadeOut(900);
+			pauseSound('battleMusic');
 		} else {
 			playerScore += 30;
 			$score.html(playerScore);
@@ -142,9 +143,9 @@ $(function () {
 			moveInterval = setInterval(function () {
 				pokemonMovement(numberOfPokemon, $pokemon)
 			},2000);
+			pauseSound('battleMusic');
+			document.getElementById('mainMusic').play();
 		}
-		pauseSound('battleMusic');
-		document.getElementById('mainMusic').play();
 	})
 
 
@@ -207,7 +208,7 @@ $(function () {
 
 	function levels (num) {
 		var newObj = '';
-		var bossrand = randomNumber(4);
+		var bossrand = randomNumber(5);
 		var typerand = randomNumber(7);
 		console.log(bossrand + ", " + typerand);
 		//debugger
