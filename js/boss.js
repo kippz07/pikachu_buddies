@@ -131,7 +131,6 @@ $(function() {
 	})
 
 	$okbutton.click(function () {
-		//$bossLevel.hide();
 		resetLevel();
 	})
 

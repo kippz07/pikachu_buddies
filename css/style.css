@@ -414,6 +414,10 @@ h3 {
 	margin-left: 20px;
 }
 
+.life {
+	height: 52px;
+}
+
 #livesText {
 	display: inline-block;
 	font-family: 'Marker Felt';

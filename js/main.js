@@ -4,7 +4,7 @@ $(function () {
 	$main.hide();
 	var $pokemon = $('.pokemon');
 	var $score = $('#scoreNumber');
-	var $lives = $('#livesNumber');
+	//var $lives = $('#livesNumber');
 	var $pikachu = $('#pikachu');
 	var happyAudio = 'raw/Pikaaaa.mp3';
 	var sadAudio = 'raw/Attack.mp3';
@@ -86,7 +86,7 @@ $(function () {
 			
 		} else {
 			totalLives--;
-			$lives.html(totalLives);
+			//$lives.html(totalLives);
 			playSound(sadAudio);
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			if (totalLives != 0) {
@@ -94,6 +94,7 @@ $(function () {
 					$pikachu.attr('src', 'images/pikachuHi.png');
 				},2000);
 			}
+			numOfLives();
 			endGame();
 		}
 		$(this).fadeToggle();
@@ -148,6 +149,17 @@ $(function () {
 		}
 	})
 
+	function numOfLives () {
+		switch (totalLives) {
+			case 3: $('#life1, #life2, #life3').show();
+				break;
+			case 2: $('#life3').fadeOut('fast');
+				break;
+			case 1: $('#life2').fadeOut('fast');
+				break;
+			case 0: $('#life1').fadeOut('fast');
+		}
+	}
 
 	function playSound(path) {
         var audioElement = document.createElement('audio');
@@ -166,7 +178,7 @@ $(function () {
 			pokemonMovement(numberOfPokemon, $pokemon)
 		},2000);
 
-		//levels(initialNum);
+		numOfLives();
 		newObject = levels(initialNum);
 	}
 
@@ -290,7 +302,7 @@ $(function () {
 		playerScore = 0;
 		$score.text(playerScore);
 		totalLives = 3;
-		$lives.text(totalLives);
+		//$lives.text(totalLives);
 		$pikachu.attr('src', 'images/pikachuHi.png');
 		$submitText.text('');
 		$winlose.removeClass();
