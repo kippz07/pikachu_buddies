@@ -17,6 +17,10 @@ button:hover {
 	cursor: pointer;
 }
 
+input:focus {
+	outline: 0;
+}
+
 #instructionsPage {
 	height: 560px;
 	width: 900px;
@@ -263,10 +267,11 @@ h3 {
     border-width: 6px;
     position: absolute;
     left: 351px;
+    background: none;
 }
 
 #playAgain:hover {
-	background-color: white;
+	background: white;
 }
 
 #endScore {
