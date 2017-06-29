@@ -11,7 +11,7 @@ Instructions from the game:
 Pikachu is lonely and wants some friends but is very particular about which Pokemon it wants to play with. Gain points by clicking on the Pokemon type indicated in the box at the top of the screen. Beware, this type could change at any time.... Clicking on the wrong pokemon will lose you a life.  
 There are three types of Pokemon in this game: fire, water and grass. Each type is associated with a Pokemon.  
 
-<img src= "images/squirtle.png" alt="Drawing" style="width: 100px; padding-right: 40px;"/>
-<img src= "images/bulbasaur.png" alt="Drawing" style="width: 100px; padding-right: 40px;"/>
-<img src= "images/charmander.png" alt="Drawing" style="width: 100px;"/>
+<img src= "images/squirtle.png" alt="Drawing" style="max-width: 20%; padding-right: 40px;"/>
+<img src= "images/bulbasaur.png" alt="Drawing" style="max-width: 20%; padding-right: 40px;"/>
+<img src= "images/charmander.png" alt="Drawing" style="max-width: 20%;"/>
 
