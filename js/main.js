@@ -208,7 +208,7 @@ $(function () {
 	function levels (num) {
 		var newObj = '';
 		var bossrand = randomNumber(4);
-		var typerand = randomNumber(9);
+		var typerand = randomNumber(7);
 		console.log(bossrand + ", " + typerand);
 		//debugger
 		switch (playerScore) {
@@ -216,13 +216,13 @@ $(function () {
 			default: newObj = newObject;
 		}
 		if (playerScore != 0) {
-			if ((bossrand === 3) && (typerand === 7)) {
+			if ((bossrand === 3) && (typerand === 6)) {
 				boss();
 				newObj = newObjective(num);
 			} else if (bossrand === 3) {
 				boss();
 				newObj = newObjective(num);
-			} else if (typerand === 7) {
+			} else if (typerand === 6) {
 				newObj = newObjective(num);
 				playSound(levelUpAudio);
 			}
