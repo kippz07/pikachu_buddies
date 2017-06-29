@@ -302,7 +302,6 @@ $(function () {
 		playerScore = 0;
 		$score.text(playerScore);
 		totalLives = 3;
-		//$lives.text(totalLives);
 		$pikachu.attr('src', 'images/pikachuHi.png');
 		$submitText.text('');
 		$('#winlose').removeClass();
@@ -338,7 +337,7 @@ $(function () {
 	} 
 
 	function storeScores (array) {
-		debugger
+		//debugger
 		var objects = {};
 		var strings= '';
 		var theObject = JSON.stringify(array);
@@ -350,7 +349,7 @@ $(function () {
 	}
 	
 	function retrieveScores () {
-		debugger
+		//debugger
 		var scores = [];
 
 		for (var i = 0; i < objNumber; i++) {
