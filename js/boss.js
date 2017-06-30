@@ -22,7 +22,6 @@ $(function() {
 	var count = 0;
 	var damage = 0;
 
-
 	var thunderbolt = {"dmg": 95, "acc": 70, "pp": 15, "flinch": 10};
 	var hiddenPower = {"dmg": 60, "acc": 90, "pp": 15, "flinch": 0};
 	var thunder = {"dmg": 110, "acc": 60, "pp": 10, "flinch": 10};
@@ -170,7 +169,6 @@ $(function() {
 						setTimeout(function () {
 						$missed.fadeOut(600);
 					},300);
-					
 				}
 				break;
 				

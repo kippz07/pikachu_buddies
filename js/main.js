@@ -121,7 +121,6 @@ $(function () {
 		setTimeout(function () {
 			$playAgain.fadeIn('slow');
 		},1000);
-
 	})
 
 	$okbutton.click(function(event) {
@@ -249,7 +248,6 @@ $(function () {
 		setTimeout(function() {
 			$bossLevel.fadeIn('slow');
 		},1900)
-		
 	}
 
 	function endGame () {
