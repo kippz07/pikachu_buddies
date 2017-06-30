@@ -68,7 +68,6 @@ $(function () {
 	
 
 	$pokemon.click(function (event) {
-		//debugger
 		newNum = randomNumber(3);
 		
 		var str = '.' + newObject;
@@ -85,7 +84,6 @@ $(function () {
 			
 		} else {
 			totalLives--;
-			//$lives.html(totalLives);
 			playSound(sadAudio);
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			if (totalLives != 0) {
@@ -127,7 +125,6 @@ $(function () {
 	})
 
 	$okbutton.click(function(event) {
-		//debugger
 		if ($('#winlose').hasClass('lose')) {
 			totalLives = 0;
 			endGame();
@@ -197,7 +194,6 @@ $(function () {
 
 	function newObjective (number) {
 		$span.removeClass();
-		//debugger
 		switch (number) {
 			case 0: 
 				$objective.html('Pikachu wants you to catch a <span>fire type</span> Pokemon');
@@ -222,7 +218,6 @@ $(function () {
 		var bossrand = randomNumber(5);
 		var typerand = randomNumber(7);
 		console.log(bossrand + ", " + typerand);
-		//debugger
 		switch (playerScore) {
 			case 0: newObj = newObjective(num); break;
 			default: newObj = newObject;
@@ -244,7 +239,6 @@ $(function () {
 	}
 
 	function boss () {
-		//debugger
 		pauseSound('mainMusic');
 		var sound = document.getElementById('battleMusic');
     	sound.play();
@@ -259,7 +253,6 @@ $(function () {
 	}
 
 	function endGame () {
-		//debugger
 		if (totalLives === 0) {
 			$endScore.text('You got a score of: ' + playerScore);
 			$pikachu.attr('src', 'images/pikachuSad.png');
@@ -284,8 +277,7 @@ $(function () {
 			 		$submitText.fadeIn();
 			 		$enterName.fadeIn();
 			 	});
-			},3000);
-			
+			},3000);	
 		}
 	}
 
@@ -337,7 +329,6 @@ $(function () {
 	} 
 
 	function storeScores (array) {
-		//debugger
 		var objects = {};
 		var strings= '';
 		var theObject = JSON.stringify(array);
@@ -349,7 +340,6 @@ $(function () {
 	}
 	
 	function retrieveScores () {
-		//debugger
 		var scores = [];
 
 		for (var i = 0; i < objNumber; i++) {

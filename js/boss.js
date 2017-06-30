@@ -28,7 +28,7 @@ $(function() {
 	var thunder = {"dmg": 110, "acc": 60, "pp": 10, "flinch": 10};
 	var thunderShock = {"dmg": 40, "acc": 100, "pp": 30, "flinch": 10};
 	var hydroPump = {"dmg": 110, "acc": 60, "pp": 5, "flinch": 0};
-	var darkPulse = {"dmg": 80, "acc": 85, "pp": 15, "flinch": 10};
+	var darkPulse = {"dmg": 70, "acc": 85, "pp": 15, "flinch": 10};
 	var iceBeam = {"dmg": 90, "acc": 70, "pp": 10, "flinch": 10};
 	var dragonPulse = {"dmg": 85, "acc": 80, "pp": 10, "flinch": 0};
 
@@ -151,7 +151,6 @@ $(function() {
 				blastoiseAttack();
 				},1000);
 			},1000);
-			
 		}
 	}
 
