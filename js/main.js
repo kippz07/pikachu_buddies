@@ -3,6 +3,7 @@ $(function () {
 	var $main = $('main');
 	$main.hide();
 	var $pokemon = $('.pokemon');
+	var $pokemon2 = $('.pokemon2');
 	var $score = $('#scoreNumber');
 	var $pikachu = $('#pikachu');
 	var happyAudio = 'raw/Pikaaaa.mp3';
@@ -49,6 +50,10 @@ $(function () {
 	var objNumber = localStorage.length;
 
 	var moveInterval;
+	var moveInterval2;
+
+	var moveSpeed = 800;
+	var changeClassSpeed = 1200;
 
 	var initialNum = randomNumber(3);
 
@@ -81,6 +86,40 @@ $(function () {
 				$pikachu.attr('src', 'images/pikachuHi.png');
 			},1000);
 			newObject = levels(newNum);
+			changeDifficulty();
+			
+		} else {
+			totalLives--;
+			playSound(sadAudio);
+			$pikachu.attr('src', 'images/pikachuSad.png');
+			if (totalLives != 0) {
+				setTimeout(function () {
+					$pikachu.attr('src', 'images/pikachuHi.png');
+				},2000);
+			}
+			numOfLives();
+			endGame();
+		}
+		$(this).fadeToggle();
+		$(this).animate({bottom:'-21px'});
+		$(this).fadeToggle();
+	});
+
+	$pokemon2.click(function (event) {
+		newNum = randomNumber(3);
+		
+		var str = '.' + newObject;
+		
+		if ($(this).is(str)) {
+			playerScore += 10;
+			$score.html(playerScore);
+			playSound(happyAudio);
+			$pikachu.attr('src', 'images/pikachuHappy.png');
+			setTimeout(function () {
+				$pikachu.attr('src', 'images/pikachuHi.png');
+			},1000);
+			newObject = levels(newNum);
+			changeDifficulty();
 			
 		} else {
 			totalLives--;
@@ -130,6 +169,11 @@ $(function () {
 			$bossLevel.fadeOut(900);
 			pauseSound('battleMusic');
 		} else {
+			if ((playerScore < 100) && (playerScore + 30 >= 100)) {
+				moveInterval2 = setInterval(function () {
+					pokemonMovement(2, $pokemon2)
+				},2000);
+			}
 			playerScore += 30;
 			$score.html(playerScore);
 			$bossLevel.fadeOut(900);
@@ -182,13 +226,25 @@ $(function () {
 		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
-    		},800);
+    		},moveSpeed);
 		   	setTimeout(function () {
 		   		var randomNum = randomNumber(numberOfPokemon);
 	  			$this.attr('class', 'pokemon ' + randomClass(randomNum));
 	 			$this.attr('src', randomImage(randomNum));
-	  		},1200);
+	  		},changeClassSpeed);
 		});	
+	}
+
+	function setDifficulty () {
+		changeClassSpeed -= moveSpeed * 0.2;
+		moveSpeed -= moveSpeed * 0.2;
+		console.log(changeClassSpeed, moveSpeed);
+	}
+
+	function changeDifficulty() {
+		if ((playerScore % 30 === 0) && (playerScore != 0)) {
+			setDifficulty();
+		}
 	}
 
 	function newObjective (number) {
@@ -216,6 +272,12 @@ $(function () {
 		var newObj = '';
 		var bossrand = randomNumber(5);
 		var typerand = randomNumber(7);
+
+		if (playerScore === 100) {
+			moveInterval2 = setInterval(function () {
+				pokemonMovement(2, $pokemon2)
+			},2000);
+		}
 		switch (playerScore) {
 			case 0: newObj = newObjective(num); break;
 			default: newObj = newObject;

@@ -450,19 +450,33 @@ h3 {
 	height: 139px;
     position: absolute;
     bottom: -11px;
-    left: 106px;
+    left: 55px;
+}
+
+#left2 {
+    height: 139px;
+    position: absolute;
+    bottom: -34px;
+    left: 202px;
 }
 
 #center {
 	height: 139px;
     position: absolute;
     bottom: -29px;
-    left: 375px;
+    left: 370px;
 }
 
 #right {
 	height: 139px;
     position: absolute;
     bottom: -34px;
-    right: 106px;
+    right: 87px;
+}
+
+#right2 {
+    height: 139px;
+    position: absolute;
+    bottom: -34px;
+    right: 233px;
 }
