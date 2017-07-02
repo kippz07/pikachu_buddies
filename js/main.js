@@ -88,6 +88,7 @@ $(function () {
 			},1000);
 			newObject = levels(newNum);
 			changeDifficulty();
+			$(this).addClass('hit');
 			
 		} else {
 			totalLives--;
@@ -222,11 +223,19 @@ $(function () {
 		newObject = levels(initialNum);
 	}
 
+	
+
 	function pokemonMovement (num, $pokemon) {
 		var $this = $pokemon.eq(randomNumber(num));
+		var str = '.' + newObject;
 		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
+	      		if ((!$this.hasClass('hit')) && ($this.is(str))) {
+	      			console.log('miss');
+	      			playerScore -= 10;
+	      			$score.html(playerScore);
+	      		}
     		},moveSpeed);
 		   	setTimeout(function () {
 		   		var randomNum = randomNumber(numberOfPokemon);
@@ -234,6 +243,9 @@ $(function () {
 	 			$this.attr('src', randomImage(randomNum));
 	  		},changeClassSpeed);
 		});	
+		if (playerScore < 0) {
+			endGame();
+		}
 	}
 
 	function setDifficulty () {
@@ -334,7 +346,10 @@ $(function () {
 	}
 
 	function endGame () {
-		if (totalLives === 0) {
+		if ((totalLives === 0) || (playerScore < 0)) {
+			if (playerScore < 0) {
+				playerScore = 0;
+			}
 			$endScore.text('You got a score of: ' + playerScore);
 			$pikachu.attr('src', 'images/pikachuSad.png');
 			clearInterval(moveInterval);
