@@ -216,7 +216,6 @@ $(function () {
 		var newObj = '';
 		var bossrand = randomNumber(5);
 		var typerand = randomNumber(7);
-		console.log(bossrand + ", " + typerand);
 		switch (playerScore) {
 			case 0: newObj = newObjective(num); break;
 			default: newObj = newObject;

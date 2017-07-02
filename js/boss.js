@@ -45,10 +45,9 @@ $(function() {
 	$('#dmg3').html(thunder.dmg);
 	$('#dmg4').html(thunderShock.dmg);
 
-	$att1.click(function (event) {
-		var accuracy = randomNumber(100);
-		if (accuracy < thunderbolt.acc){
-			remHealth = remHealth - (thunderbolt.dmg * 100 / bossHealth);
+	function playerAttack (attack, accuracy) {
+		if (accuracy < attack.acc){
+			remHealth = remHealth - (attack.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
@@ -64,69 +63,26 @@ $(function() {
 			count++;
 			play();
 		}
+	}
+
+	$att1.click(function (event) {
+		var accuracy = randomNumber(100);
+		playerAttack(thunderbolt, accuracy);
 	})
 
 	$att2.click(function (event) {
 		var accuracy = randomNumber(100);
-		if (accuracy < hiddenPower.acc) {
-			remHealth = remHealth - (hiddenPower.dmg * 100 / bossHealth);
-			$bossHealthbar.css('width', remHealth + '%');
-			playSound(blastoisehit);
-			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-		} else {
-			$missed.show();
-				setTimeout(function () {
-				$missed.fadeOut(600);
-			},300);
-		}
-		if (remHealth <= 0) {
-			endLevel('human');
-		} else {
-			count++;
-			play();
-		}
+		playerAttack(hiddenPower, accuracy);
 	})
 
 	$att3.click(function (event) {
 		var accuracy = randomNumber(100);
-		if (accuracy < thunder.acc) {
-			remHealth = remHealth - (thunder.dmg * 100 / bossHealth);
-			$bossHealthbar.css('width', remHealth + '%');
-			playSound(blastoisehit);
-			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-		} else {
-			$missed.show();
-				setTimeout(function () {
-				$missed.fadeOut(600);
-			},300);
-		}
-		if (remHealth <= 0) {
-			endLevel('human');
-		} else {
-			count++;
-			play();
-		}	
+		playerAttack(thunder, accuracy);	
 	})
 
 	$att4.click(function (event) {
 		var accuracy = randomNumber(100);
-		if (accuracy < thunderShock.acc) {
-			remHealth = remHealth - (thunderShock.dmg * 100 / bossHealth);
-			$bossHealthbar.css('width', remHealth + '%');
-			playSound(blastoisehit);
-			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-		} else {
-			$missed.show();
-				setTimeout(function () {
-				$missed.fadeOut(600);
-			},300);
-		}
-		if (remHealth <= 0) {
-			endLevel('human');
-		} else {
-			count++;
-			play();
-		}
+		playerAttack(thunderShock, accuracy);
 	})
 
 	$okbutton.click(function () {
@@ -153,68 +109,39 @@ $(function() {
 		}
 	}
 
+	function bossAttack (attack, accuracy) {
+		console.log(attack);
+		if (accuracy < attack.acc) {
+			pikaremHealth = pikaremHealth - (attack.dmg * 100 / pikachuHealth);
+			$pikachuHealthbar.css('width', pikaremHealth + '%');
+			playSound(pikachuhit);
+			$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+		} else {
+			$missed.show();
+			setTimeout(function () {
+				$missed.fadeOut(600);
+			},300);
+		}
+	}
+
 	function blastoiseAttack () {
 		var number = randomNumber(4);
 		var accuracy = randomNumber(100);
 		switch (number) {
 			case 0:
-				if (accuracy < hydroPump.acc) {
-					pikaremHealth = pikaremHealth - (hydroPump.dmg * 100 / pikachuHealth);
-					$pikachuHealthbar.css('width', pikaremHealth + '%');
-					playSound(pikachuhit);
-					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-					console.log('attack1');
-				} else {
-					$missed.show();
-						setTimeout(function () {
-						$missed.fadeOut(600);
-					},300);
-				}
+				bossAttack(hydroPump, accuracy);
 				break;
 				
 			case 1:
-				if (accuracy < darkPulse.acc) {
-					pikaremHealth = pikaremHealth - (darkPulse.dmg * 100 / pikachuHealth);
-					$pikachuHealthbar.css('width', pikaremHealth + '%');
-					playSound(pikachuhit);
-					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-					console.log('attack2');
-				} else {
-					$missed.show();
-						setTimeout(function () {
-						$missed.fadeOut(600);
-					},300);
-				}
+				bossAttack(darkPulse, accuracy);
 				break;
 				
 			case 2:
-				if (accuracy < iceBeam.acc) {
-					pikaremHealth = pikaremHealth - (iceBeam.dmg * 100 / pikachuHealth);
-					$pikachuHealthbar.css('width', pikaremHealth + '%');
-					playSound(pikachuhit);
-					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-					console.log('attack3');
-				} else {
-					$missed.show();
-						setTimeout(function () {
-						$missed.fadeOut(600);
-					},300);
-				}
+				bossAttack(iceBeam, accuracy);
 				break;
 				
 			case 3:
-				if (accuracy < dragonPulse) {
-					pikaremHealth = pikaremHealth - (dragonPulse.dmg * 100 / pikachuHealth);
-					$pikachuHealthbar.css('width', pikaremHealth + '%');
-					playSound(pikachuhit);
-					$pikachu.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-					console.log('attack4');
-				} else {
-					$missed.show();
-						setTimeout(function () {
-						$missed.fadeOut(600);
-					},300);
-				}
+				bossAttack(dragonPulse, accuracy);
 				break;	
 		}
 		if (pikaremHealth <= 0) {
