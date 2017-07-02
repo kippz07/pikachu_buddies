@@ -39,8 +39,6 @@ $(function() {
 			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}],
 	}
 
-	console.log(bossMoves.blastoise[0].dmg);
-
 	var $att1 = $('#attack1');
 	var $att2 = $('#attack2');
 	var $att3 = $('#attack3');
@@ -131,7 +129,6 @@ $(function() {
 	}
 
 	function bossAttack (attack, accuracy) {
-		console.log(attack);
 		if (accuracy < attack.acc) {
 			pikaremHealth = pikaremHealth - (attack.dmg * 100 / pikachuHealth);
 			$pikachuHealthbar.css('width', pikaremHealth + '%');

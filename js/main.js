@@ -232,7 +232,6 @@ $(function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
 	      		if ((!$this.hasClass('hit')) && ($this.is(str))) {
-	      			console.log('miss');
 	      			playerScore -= 10;
 	      			$score.html(playerScore);
 	      		}
@@ -251,7 +250,6 @@ $(function () {
 	function setDifficulty () {
 		changeClassSpeed -= moveSpeed * 0.2;
 		moveSpeed -= moveSpeed * 0.2;
-		console.log(changeClassSpeed, moveSpeed);
 	}
 
 	function changeDifficulty() {
@@ -328,7 +326,6 @@ $(function () {
 	function chooseBoss () {
 		var number = randomNumber(3);
 		$blastoise.removeClass();
-		console.log(number);
 		switch (number) {
 			case 0:
 				$blastoise.attr('src', 'images/blastoise.png');
