@@ -10,6 +10,7 @@ $(function () {
 	var sadAudio = 'raw/Attack.mp3';
 	var levelUpAudio = 'raw/congrats.mp3';
 	var bossAudio = 'raw/battle.mp3';
+	var $blastoise = $('#blastoise');
 	var $bossLevel = $('#boss');
 	$bossLevel.hide(); 
 	var $popup = $('#popup');
@@ -299,6 +300,7 @@ $(function () {
 	}
 
 	function boss () {
+		chooseBoss();
 		pauseSound('mainMusic');
 		var sound = document.getElementById('battleMusic');
     	sound.play();
@@ -309,6 +311,26 @@ $(function () {
 		setTimeout(function() {
 			$bossLevel.fadeIn('slow');
 		},1900)
+	}
+
+	function chooseBoss () {
+		var number = randomNumber(3);
+		$blastoise.removeClass();
+		console.log(number);
+		switch (number) {
+			case 0:
+				$blastoise.attr('src', 'images/blastoise.png');
+				$blastoise.addClass('blastoise');
+				break;
+			case 1:
+				$blastoise.attr('src', 'images/Charizard.png');
+				$blastoise.addClass('charizard');
+				break;
+			case 2:
+				$blastoise.attr('src', 'images/Venusaur.png');
+				$blastoise.addClass('venusaur');
+				break;
+		} 
 	}
 
 	function endGame () {

@@ -149,9 +149,27 @@ h3 {
 }
 
 #blastoise {
-	position: absolute;
+	
+}
+
+.blastoise {
+    position: absolute;
     bottom: 97px;
     left: 111px;
+}
+
+.charizard {
+    position: absolute;
+    bottom: 97px;
+    left: 111px;
+    width: 310px;
+}
+
+.venusaur {
+    position: absolute;
+    bottom: 38px;
+    left: 90px;
+    height: 362px;
 }
 
 #bosshealth {

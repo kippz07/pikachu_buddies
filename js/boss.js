@@ -21,6 +21,7 @@ $(function() {
 	$missed.hide();
 	var count = 0;
 	var damage = 0;
+	var creature = '';
 
 	var thunderbolt = {"dmg": 95, "acc": 70, "pp": 15, "flinch": 10};
 	var hiddenPower = {"dmg": 60, "acc": 90, "pp": 15, "flinch": 0};
@@ -54,12 +55,14 @@ $(function() {
 	$('#dmg3').html(thunder.dmg);
 	$('#dmg4').html(thunderShock.dmg);
 
-	function chooseBoss () {
-		var number = randomNumber(3);
-		switch (number) {
-			case 0:
-				
-		} 
+	function setAttacks () {
+		if ($blastoise.hasClass('blastoise')) {
+			return bossMoves.blastoise;
+		} else if ($blastoise.hasClass('charizard')) {
+			return bossMoves.blastoise;
+		} else if ($blastoise.hasClass('venusaur')) {
+			return bossMoves.blastoise;
+		}
 	}
 
 	function playerAttack (attack, accuracy) {
@@ -84,27 +87,28 @@ $(function() {
 
 	$att1.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(thunderbolt, accuracy);
+		playerAttack(setAttacks()[0], accuracy);
 	})
 
 	$att2.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(hiddenPower, accuracy);
+		playerAttack(setAttacks()[1], accuracy);
 	})
 
 	$att3.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(thunder, accuracy);	
+		playerAttack(setAttacks()[2], accuracy);	
 	})
 
 	$att4.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(thunderShock, accuracy);
+		playerAttack(setAttacks()[3], accuracy);
 	})
 
 	$okbutton.click(function () {
 		resetLevel();
 	})
+
 
 	play();
 
@@ -146,19 +150,19 @@ $(function() {
 		var accuracy = randomNumber(100);
 		switch (number) {
 			case 0:
-				bossAttack(hydroPump, accuracy);
+				bossAttack(setAttacks()[0], accuracy);
 				break;
 				
 			case 1:
-				bossAttack(darkPulse, accuracy);
+				bossAttack(setAttacks()[1], accuracy);
 				break;
 				
 			case 2:
-				bossAttack(iceBeam, accuracy);
+				bossAttack(setAttacks()[2], accuracy);
 				break;
 				
 			case 3:
-				bossAttack(dragonPulse, accuracy);
+				bossAttack(setAttacks()[3], accuracy);
 				break;	
 		}
 		if (pikaremHealth <= 0) {
