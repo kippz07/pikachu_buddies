@@ -52,6 +52,7 @@ $(function () {
 
 	var moveInterval;
 	var moveInterval2;
+	var moreThan30 = false;
 
 	var moveSpeed = 800;
 	var changeClassSpeed = 1200;
@@ -228,10 +229,13 @@ $(function () {
 	function pokemonMovement (num, $pokemon) {
 		var $this = $pokemon.eq(randomNumber(num));
 		var str = '.' + newObject;
+		if (playerScore >= 30) {
+			moreThan30 = true;
+		}
 		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
-	      		if ((!$this.hasClass('hit')) && ($this.is(str))) {
+	      		if ((!$this.hasClass('hit')) && ($this.is(str)) && moreThan30) {
 	      			playerScore -= 10;
 	      			$score.html(playerScore);
 	      		}
@@ -343,9 +347,10 @@ $(function () {
 	}
 
 	function endGame () {
-		if ((totalLives === 0) || (playerScore < 0)) {
+		if ((totalLives === 0) || (playerScore <= 0)) {
 			if (playerScore < 0) {
 				playerScore = 0;
+				$score.html(playerScore);
 			}
 			$endScore.text('You got a score of: ' + playerScore);
 			$pikachu.attr('src', 'images/pikachuSad.png');
