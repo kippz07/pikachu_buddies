@@ -37,6 +37,14 @@ $(function() {
 			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
 			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
 			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}],
+		'charizard': [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
+			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
+			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
+			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}],
+		'venusaur': [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
+			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
+			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
+			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}]
 	}
 
 	var $att1 = $('#attack1');
@@ -57,9 +65,9 @@ $(function() {
 		if ($blastoise.hasClass('blastoise')) {
 			return bossMoves.blastoise;
 		} else if ($blastoise.hasClass('charizard')) {
-			return bossMoves.blastoise;
+			return bossMoves.charizard;
 		} else if ($blastoise.hasClass('venusaur')) {
-			return bossMoves.blastoise;
+			return bossMoves.venusaur;
 		}
 	}
 
