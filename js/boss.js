@@ -27,24 +27,20 @@ $(function() {
 	var hiddenPower = {"dmg": 60, "acc": 90, "pp": 15, "flinch": 0};
 	var thunder = {"dmg": 110, "acc": 60, "pp": 10, "flinch": 10};
 	var thunderShock = {"dmg": 40, "acc": 100, "pp": 30, "flinch": 10};
-	// var hydroPump = {"dmg": 110, "acc": 60, "pp": 5, "flinch": 0};
-	// var darkPulse = {"dmg": 70, "acc": 85, "pp": 15, "flinch": 10};
-	// var iceBeam = {"dmg": 90, "acc": 70, "pp": 10, "flinch": 10};
-	// var dragonPulse = {"dmg": 85, "acc": 80, "pp": 10, "flinch": 0};
 
 	var bossMoves = {
 		'blastoise': [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
 			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
 			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
 			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}],
-		'charizard': [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
-			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
-			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
-			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}],
-		'venusaur': [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
-			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
-			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
-			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}]
+		'charizard': [{"dmg": 120, "acc": 55, "pp": 5, "flinch": 0}, 
+			{"dmg": 100, "acc": 60, "pp": 10, "flinch": 0}, 
+			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0},
+			{"dmg": 40, "acc": 100, "pp": 25, "flinch": 0}],
+		'venusaur': [{"dmg": 55, "acc": 95, "pp": 25, "flinch": 0}, 
+			{"dmg": 85, "acc": 90, "pp": 15, "flinch": 0}, 
+			{"dmg": 150, "acc": 70, "pp": 10, "flinch": 0},
+			{"dmg": 80, "acc": 80, "pp": 10, "flinch": 0}]
 	}
 
 	var $att1 = $('#attack1');
