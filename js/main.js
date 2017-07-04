@@ -386,6 +386,7 @@ $(function () {
 		$endScore.hide();
 		$main.show();
 		$bossLevel.hide();
+		moreThan30 = false;
 		moveInterval = setInterval(function () {
 			pokemonMovement(numberOfPokemon, $pokemon)
 		},2000);
