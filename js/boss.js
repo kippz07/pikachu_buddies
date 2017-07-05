@@ -84,8 +84,7 @@ $(function() {
 		if (accuracy < attack.acc){
 			remHealth = remHealth - (attack.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
-			console.log(setAttacks[4]);
-			playSound(blastoisehit);
+			playSound(setAttacks()[4]);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
 			$missed.show();
