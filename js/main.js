@@ -442,8 +442,13 @@ $(function () {
 		var scores = [];
 
 		for (var i = 0; i < objNumber; i++) {
-			var item = JSON.parse(localStorage.getItem(i));
-			scores.push(item);
+			try {
+				var item = JSON.parse(localStorage.getItem(i));
+				scores.push(item);
+			} catch(e) {
+        	alert(e);
+    	}
+			
 		}
 
 		$('ol').empty();
