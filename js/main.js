@@ -347,7 +347,7 @@ $(function () {
 	}
 
 	function endGame () {
-		if ((totalLives === 0) || (playerScore <= 0)) {
+		if (((totalLives === 0) || (playerScore <= 0)) && moreThan30 == true) {
 			if (playerScore < 0) {
 				playerScore = 0;
 				$score.html(playerScore);
