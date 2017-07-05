@@ -235,11 +235,12 @@ $(function () {
 		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
-	      		if ((!$this.hasClass('hit')) && ($this.is(str)) && moreThan30) {
-	      			playerScore -= 10;
-	      			$score.html(playerScore);
-	      		}
+	      		
     		},moveSpeed);
+	 			if ((!$this.hasClass('hit')) && ($this.is(str)) && moreThan30) {
+	   			playerScore -= 10;
+	     		$score.html(playerScore);
+	      }
 		   	setTimeout(function () {
 		   		var randomNum = randomNumber(numberOfPokemon);
 	  			$this.attr('class', 'pokemon ' + randomClass(randomNum));
