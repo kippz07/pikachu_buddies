@@ -29,18 +29,21 @@ $(function() {
 	var thunderShock = {"dmg": 40, "acc": 100, "pp": 30, "flinch": 10};
 
 	var bossMoves = {
-		'blastoise': [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
+		"blastoise": [{"dmg": 110, "acc": 60, "pp": 5, "flinch": 0}, 
 			{"dmg": 70, "acc": 85, "pp": 15, "flinch": 10}, 
 			{"dmg": 90, "acc": 70, "pp": 10, "flinch": 10},
-			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0}],
-		'charizard': [{"dmg": 120, "acc": 55, "pp": 5, "flinch": 0}, 
+			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0},
+			"raw/blastoise.wav"],
+		"charizard": [{"dmg": 120, "acc": 55, "pp": 5, "flinch": 0}, 
 			{"dmg": 100, "acc": 60, "pp": 10, "flinch": 0}, 
 			{"dmg": 85, "acc": 80, "pp": 10, "flinch": 0},
-			{"dmg": 40, "acc": 100, "pp": 25, "flinch": 0}],
-		'venusaur': [{"dmg": 55, "acc": 95, "pp": 25, "flinch": 0}, 
+			{"dmg": 40, "acc": 100, "pp": 25, "flinch": 0},
+			"raw/charizard.wav"],
+		"venusaur": [{"dmg": 55, "acc": 95, "pp": 25, "flinch": 0}, 
 			{"dmg": 85, "acc": 90, "pp": 15, "flinch": 0}, 
 			{"dmg": 150, "acc": 70, "pp": 10, "flinch": 0},
-			{"dmg": 80, "acc": 80, "pp": 10, "flinch": 0}]
+			{"dmg": 80, "acc": 80, "pp": 10, "flinch": 0},
+			"raw/venusaur.wav"]
 	}
 
 	var $att1 = $('#attack1');
@@ -67,10 +70,21 @@ $(function() {
 		}
 	}
 
+	function setBossAudio () {
+		if ($blastoise.hasClass('blastoise')) {
+			return bossMoves.blastoise[4];
+		} else if ($blastoise.hasClass('charizard')) {
+			return bossMoves.charizard[4];
+		} else if ($blastoise.hasClass('venusaur')) {
+			return bossMoves.venusaur[4];
+		}
+	}
+
 	function playerAttack (attack, accuracy) {
 		if (accuracy < attack.acc){
 			remHealth = remHealth - (attack.dmg * 100 / bossHealth);
 			$bossHealthbar.css('width', remHealth + '%');
+			console.log(setAttacks[4]);
 			playSound(blastoisehit);
 			$blastoise.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 		} else {
@@ -89,22 +103,22 @@ $(function() {
 
 	$att1.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(setAttacks()[0], accuracy);
+		playerAttack(thunderbolt, accuracy);
 	})
 
 	$att2.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(setAttacks()[1], accuracy);
+		playerAttack(hiddenPower, accuracy);
 	})
 
 	$att3.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(setAttacks()[2], accuracy);	
+		playerAttack(thunder, accuracy);	
 	})
 
 	$att4.click(function (event) {
 		var accuracy = randomNumber(100);
-		playerAttack(setAttacks()[3], accuracy);
+		playerAttack(thunderShock, accuracy);
 	})
 
 	$okbutton.click(function () {
