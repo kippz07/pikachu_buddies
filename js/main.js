@@ -52,7 +52,7 @@ $(function () {
 
 	var moveInterval;
 	var moveInterval2;
-	var moreThan30 = false;
+	// var moreThan30 = false;
 
 	var moveSpeed = 800;
 	var changeClassSpeed = 1200;
@@ -229,27 +229,27 @@ $(function () {
 	function pokemonMovement (num, $pokemon) {
 		var $this = $pokemon.eq(randomNumber(num));
 		var str = '.' + newObject;
-		if (playerScore >= 30) {
-			moreThan30 = true;
-		}
+		// if (playerScore >= 30) {
+		// 	moreThan30 = true;
+		// }
 		$this.animate({bottom:'100px'}, function () {
 	 		setTimeout(function () {
 	      		$this.animate({bottom:'-28px'});
 	      		
     		},moveSpeed);
-	 			if ((!$this.hasClass('hit')) && ($this.is(str)) && moreThan30) {
-	   			playerScore -= 10;
-	     		$score.html(playerScore);
-	      }
+	 			// if ((!$this.hasClass('hit')) && ($this.is(str)) && moreThan30) {
+	   	// 		playerScore -= 10;
+	    //  		$score.html(playerScore);
+	      // }
 		   	setTimeout(function () {
 		   		var randomNum = randomNumber(numberOfPokemon);
 	  			$this.attr('class', 'pokemon ' + randomClass(randomNum));
 	 			$this.attr('src', randomImage(randomNum));
 	  		},changeClassSpeed);
 		});	
-		if (playerScore < 0) {
-			endGame();
-		}
+		// if (playerScore < 0) {
+		// 	endGame();
+		// }
 	}
 
 	function setDifficulty () {
@@ -448,8 +448,7 @@ $(function () {
 				scores.push(item);
 			} catch(e) {
         	alert(e);
-    	}
-			
+    		}	
 		}
 
 		$('ol').empty();
@@ -469,5 +468,4 @@ $(function () {
 			}
 		}
 	}
-
-})
+});
